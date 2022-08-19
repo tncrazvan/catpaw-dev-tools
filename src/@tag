@@ -1,5 +1,9 @@
 #!/usr/bin/env php
 <?php
+/**
+ * @psalm-type ProjectName = "dev-tools" | "core" | "cli" | "environment" | "examples" | "mysql" | "mysql-dbms" | "optional" | "queue" | "raspberrypi" | "starter" | "store" | "web" | "cui" | "spa" | "web-starter" | "svelte-starter"
+ */
+
 use CatPaw\Environment\Attributes\Environment;
 use CatPaw\Environment\Attributes\EnvironmentFileName;
 
@@ -7,92 +11,26 @@ use function Amp\call;
 use function CatPaw\execute;
 
 
-
 /**
- * 
- * @param array{
- *  dev-tools: array{
- *   version: string,
- *   message: string
- *  },
- *  core: array{
- *   version: string,
- *   message: string
- *  },
- *  cli: array{
- *   version: string,
- *   message: string
- *  },
- *  environment: array{
- *   version: string,
- *   message: string
- *  },
- *  examples: array{
- *   version: string,
- *   message: string
- *  },
- *  mysql: array{
- *   version: string,
- *   message: string
- *  },
- *  mysql-dbms: array{
- *   version: string,
- *   message: string
- *  },
- *  optional: array{
- *   version: string,
- *   message: string
- *  },
- *  queue: array{
- *   version: string,
- *   message: string
- *  },
- *  raspberrypi: array{
- *   version: string,
- *   message: string
- *  },
- *  starter: array{
- *   version: string,
- *   message: string
- *  },
- *  store: array{
- *   version: string,
- *   message: string
- *  },
- *  web: array{
- *   version: string,
- *   message: string
- *  },
- *  cui: array{
- *   version: string,
- *   message: string
- *  },
- *  spa: array{
- *   version: string,
- *   message: string
- *  },
- *  web-starter: array{
- *   version: string,
- *   message: string
- *  },
- *  svelte-starter: array{
- *   version: string,
- *   message: string
- *  }
- * } $projects 
+ * @param array<ProjectName> $projects 
+ * @param string $version 
+ * @param string $message 
  * @return void 
  * @throws Error 
  */
 #[EnvironmentFileName('.env.yml')]
 function main(
     #[Environment('projects')] array $projects,
+    #[Environment('version')] string $version,
+    #[Environment('message')] string $message,
 ){
     chdir(dirname(__FILE__));
     $root = realpath('../../');
 
-    foreach($projects as $project => $options){
-        $version = preg_replace('/"/','\\"',$options['version']);
-        $message = preg_replace('/"/','\\"',$options['message']);
+    $version = preg_replace('/"/','\\"',$version);
+    $message = preg_replace('/"/','\\"',$message);
+
+    foreach($projects as $project){
         echo "Tagging project catpaw-$project".PHP_EOL;
         $cwd = "$root/catpaw-$project";
         call(function() use($version,$message,$cwd){
