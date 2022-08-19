@@ -15,18 +15,18 @@ function main(
 
     echo "Taggin project catpaw-dev-tools".PHP_EOL;
     `git add .`;
-    `git commit -a --allow-empty-message -m ''`;
+    `git commit -m"Commit before tag $version"`;
     `git push`;
-    `git tag -a "$version"`;
+    `git tag -a "$version" -m"Version $version"`;
     `git push --tags`;
 
     foreach($projects as $project){
         chdir("../catpaw-$project");
         echo "Taggin project catpaw-$project".PHP_EOL;
         `git add .`;
-        `git commit -a --allow-empty-message -m ''`;
+        `git commit -m"Commit before tag $version"`;
         `git push`;
-        `git tag -a "$version"`;
+        `git tag -a "$version" -m"Version $version"`;
         `git push --tags`;
     }
 }
