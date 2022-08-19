@@ -67,8 +67,8 @@ function main(
             continue;
         }
         export($root, $project, match($project){
-            "svelte-starter" => ['bin','.github','start','.php-cs-fixer.php','psalm.xml'],
-            default => ['bin','.vscode','.github','start','.php-cs-fixer.php','psalm.xml'],
+            "svelte-starter" => ['bin','.github','start','.php-cs-fixer.php','psalm.xml','build.yml'],
+            default => ['bin','.vscode','.github','start','.php-cs-fixer.php','psalm.xml','build.yml'],
         });
     }
 }
