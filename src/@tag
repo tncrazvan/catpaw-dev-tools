@@ -27,9 +27,9 @@ function main(
     yield execute("git push --tags");
 
     foreach($projects as $project){
-        call(function() use($version,$project,$root){
-            echo "Tagging project catpaw-$project".PHP_EOL;
-            $cwd = "$root/catpaw-$project";
+        echo "Tagging project catpaw-$project".PHP_EOL;
+        $cwd = "$root/catpaw-$project";
+        call(function() use($version,$cwd){
             yield execute("git add .",$cwd);
             yield execute("git commit -m\"Commit before tag $version\"",$cwd);
             yield execute("git push",$cwd);
