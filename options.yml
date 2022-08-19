@@ -13,7 +13,7 @@ projects:
   mysql:
     version: 0.1.5
   mysql-dbms:
-    version: 0.1.5
+    version: 0.1.6
   optional:
     version: 0.1.5
   queue:
