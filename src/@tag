@@ -18,7 +18,7 @@ use function CatPaw\execute;
  * @return void 
  * @throws Error 
  */
-#[EnvironmentFileName('.env.yml')]
+#[EnvironmentFileName('options.yml')]
 function main(
     #[Environment('projects')] array $projects,
     #[Environment('version')] string $version,
@@ -29,7 +29,7 @@ function main(
 
     foreach($projects as $project => $options){
         $version = preg_replace('/"/','\\"',$options['version']);
-        $message = preg_replace('/"/','\\"',$options['message']);
+        $message = preg_replace('/"/','\\"',$options['message']??"Version $version");
         echo "Tagging project catpaw-$project".PHP_EOL;
         $cwd = "$root/catpaw-$project";
         call(function() use($version,$message,$cwd){

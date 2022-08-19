@@ -15,7 +15,7 @@ use function CatPaw\execute;
  * @return void
  * @throws Error
  */
-#[EnvironmentFileName('.env.yml')]
+#[EnvironmentFileName('options.yml')]
 function main(
     #[Environment('projects')] array $projects,
 ){

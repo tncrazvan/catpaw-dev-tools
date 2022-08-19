@@ -54,7 +54,7 @@ function export(string $root, mixed $project, array $items):Promise {
  * @return void
  * @throws Error
  */
-#[EnvironmentFileName('.env.yml')]
+#[EnvironmentFileName('options.yml')]
 function main(
     #[Environment('projects')] array $projects,
 ){
