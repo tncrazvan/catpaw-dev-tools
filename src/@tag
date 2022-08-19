@@ -21,7 +21,7 @@ function main(
     `git push --tags`;
 
     foreach($projects as $project){
-        chdir("../catpaw-$project");
+        chdir("../../catpaw-$project");
         echo "Taggin project catpaw-$project".PHP_EOL;
         `git add .`;
         `git commit -m"Commit before tag $version"`;
