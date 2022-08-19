@@ -1,53 +1,53 @@
 
 projects:
   dev-tools:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   core:
-    version: 0.2.1
-    message: ""
+    version: 0.2.2
+    message : "fixing versions"
   cli:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   environment:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   examples:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   mysql:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   mysql-dbms:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   optional:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   queue:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   raspberrypi:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   starter:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   store:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   web:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   cui:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   spa:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   web-starter:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
   svelte-starter:
-    version: 0.2.1
-    message: ""
+    version: 0.2.3
+    message : "fixing versions"
