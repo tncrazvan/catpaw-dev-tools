@@ -11,6 +11,7 @@ function main(
     #[Environment('projects')] array $projects,
 ){
     chdir(dirname(__FILE__));
+    $root = realpath('../../');
     $version = yield read('./version');
 
     echo "Taggin project catpaw-dev-tools".PHP_EOL;
@@ -21,7 +22,7 @@ function main(
     `git push --tags`;
 
     foreach($projects as $project){
-        chdir("../../catpaw-$project");
+        chdir("$root/catpaw-$project");
         echo "Taggin project catpaw-$project".PHP_EOL;
         `git add .`;
         `git commit -m"Commit before tag $version"`;
