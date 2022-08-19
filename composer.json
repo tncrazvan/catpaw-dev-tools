@@ -13,7 +13,8 @@
     "action:test": [],
     "test": [],
     "export": "XDEBUG_MODE='off' php ./bin/start -esrc/@export",
-    "tag": "XDEBUG_MODE='off' php ./bin/start -esrc/@tag"
+    "tag": "XDEBUG_MODE='off' php ./bin/start -esrc/@tag",
+    "delete:all:tags": "XDEBUG_MODE='off' php ./bin/start -esrc/@delete:all:tags"
   },
   "authors": [
     {

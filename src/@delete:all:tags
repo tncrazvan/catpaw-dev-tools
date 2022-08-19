@@ -1,0 +1,44 @@
+#!/usr/bin/env php
+<?php
+
+use CatPaw\Environment\Attributes\Environment;
+use CatPaw\Environment\Attributes\EnvironmentFileName;
+use CatPaw\Environment\Services\EnvironmentService;
+
+use function Amp\call;
+use function CatPaw\execute;
+
+#[EnvironmentFileName('.env.yml')]
+function main(
+    #[Environment('projects')] array $projects,
+){
+    chdir(dirname(__FILE__));
+    $root = realpath('../../');
+
+    $cwd = "$root/catpaw-dev-tools";
+    echo "Deleting tags of project catpaw-dev-tools".PHP_EOL;
+
+    #Delete local tags.
+    yield execute("git tag -l | xargs git tag -d",$cwd);
+    #Fetch remote tags.
+    yield execute("git fetch",$cwd);
+    #Delete remote tags.
+    yield execute("git tag -l | xargs git push --delete origin",$cwd);
+    #Delete local tasg.
+    yield execute("git tag -l | xargs git tag -d",$cwd);
+
+    foreach($projects as $project){
+        echo "Tagging project catpaw-$project".PHP_EOL;
+        $cwd = "$root/catpaw-$project";
+        call(function() use($cwd){
+            #Delete local tags.
+            yield execute("git tag -l | xargs git tag -d",$cwd);
+            #Fetch remote tags.
+            yield execute("git fetch",$cwd);
+            #Delete remote tags.
+            yield execute("git tag -l | xargs git push --delete origin",$cwd);
+            #Delete local tasg.
+            yield execute("git tag -l | xargs git tag -d",$cwd);
+        });
+    }
+}
