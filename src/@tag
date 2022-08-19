@@ -5,6 +5,7 @@ use CatPaw\Environment\Attributes\Environment;
 use CatPaw\Environment\Attributes\EnvironmentFileName;
 use CatPaw\Environment\Services\EnvironmentService;
 
+use function Amp\call;
 use function Amp\File\read;
 use function CatPaw\execute;
 
@@ -26,12 +27,14 @@ function main(
     yield execute("git push --tags");
 
     foreach($projects as $project){
-        chdir("$root/catpaw-$project");
         echo "Tagging project catpaw-$project".PHP_EOL;
-        yield execute("git add .");
-        yield execute("git commit -m\"Commit before tag $version\"");
-        yield execute("git push");
-        yield execute("git tag -a \"$version\" -m\"Version $version\"");
-        yield execute("git push --tags");
+        $cwd = "$root/catpaw-$project";
+        call(function() use($version,$cwd){
+            yield execute("git add .",$cwd);
+            yield execute("git commit -m\"Commit before tag $version\"",$cwd);
+            yield execute("git push",$cwd);
+            yield execute("git tag -a \"$version\" -m\"Version $version\"",$cwd);
+            yield execute("git push --tags",$cwd);
+        });
     }
 }
