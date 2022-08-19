@@ -15,7 +15,7 @@ function main(
 
     echo "Taggin project catpaw-dev-tools".PHP_EOL;
     `git add .`;
-    `git commit -m"Commit before tag $version"`;
+    `git commit -a --allow-empty-message -m ''`;
     `git push`;
     `git tag -a "$version"`;
     `git push --tags`;
@@ -24,7 +24,7 @@ function main(
         chdir("../catpaw-$project");
         echo "Taggin project catpaw-$project".PHP_EOL;
         `git add .`;
-        `git commit -m"Commit before tag $version"`;
+        `git commit -a --allow-empty-message -m ''`;
         `git push`;
         `git tag -a "$version"`;
         `git push --tags`;
