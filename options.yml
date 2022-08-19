@@ -1,37 +1,53 @@
 
 projects:
   dev-tools:
-    version: 0.2.0
-    message: Adding build tools
+    version: 0.2.1
+    message: Adding "composer build" script
   core:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   cli:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   environment:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   examples:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   mysql:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   mysql-dbms:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   optional:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   queue:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   raspberrypi:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   starter:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   store:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   web:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   cui:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   spa:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   web-starter:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
   svelte-starter:
-    version: 0.2.0
+    version: 0.2.1
+    message: Adding "composer build" script
