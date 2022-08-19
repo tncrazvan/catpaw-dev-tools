@@ -3,8 +3,10 @@
 
 use CatPaw\Environment\Attributes\Environment;
 use CatPaw\Environment\Attributes\EnvironmentFileName;
+use CatPaw\Environment\Services\EnvironmentService;
 
 use function Amp\File\read;
+use function CatPaw\execute;
 
 #[EnvironmentFileName('.env.yml')]
 function main(
@@ -14,20 +16,22 @@ function main(
     $root = realpath('../../');
     $version = yield read('./version');
 
-    echo "Taggin project catpaw-dev-tools".PHP_EOL;
-    `git add .`;
-    `git commit -m"Commit before tag $version"`;
-    `git push`;
-    `git tag -a "$version" -m"Version $version"`;
-    `git push --tags`;
+    chdir("$root/catpaw-dev-tools");
+    echo "Tagging project catpaw-dev-tools".PHP_EOL;
+
+    yield execute("git add .");
+    yield execute("git commit -m\"Commit before tag $version\"");
+    yield execute("git push");
+    yield execute("git tag -a \"$version\" -m\"Version $version\"");
+    yield execute("git push --tags");
 
     foreach($projects as $project){
         chdir("$root/catpaw-$project");
-        echo "Taggin project catpaw-$project".PHP_EOL;
-        `git add .`;
-        `git commit -m"Commit before tag $version"`;
-        `git push`;
-        `git tag -a "$version" -m"Version $version"`;
-        `git push --tags`;
+        echo "Tagging project catpaw-$project".PHP_EOL;
+        yield execute("git add .");
+        yield execute("git commit -m\"Commit before tag $version\"");
+        yield execute("git push");
+        yield execute("git tag -a \"$version\" -m\"Version $version\"");
+        yield execute("git push --tags");
     }
 }

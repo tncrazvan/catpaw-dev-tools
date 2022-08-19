@@ -12,7 +12,6 @@ use function CatPaw\copyDirectoryRecursively;
 
 use function CatPaw\copyFile;
 use function CatPaw\deleteDirectoryRecursively;
-use Psr\Log\LoggerInterface;
 
 function export(string $project, array $items):Promise {
     return call(function() use ($project, $items) {
