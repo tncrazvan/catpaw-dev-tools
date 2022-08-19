@@ -38,12 +38,92 @@ function export(string $project, array $items):Promise {
     });
 }
 
+
+/**
+ * 
+ * @param array{
+ *  dev-tools: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  core: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  cli: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  environment: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  examples: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  mysql: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  mysql-dbms: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  optional: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  queue: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  raspberrypi: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  starter: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  store: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  web: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  cui: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  spa: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  web-starter: array{
+ *   version: string,
+ *   message: string
+ *  },
+ *  svelte-starter: array{
+ *   version: string,
+ *   message: string
+ *  }
+ * } $projects 
+ * @return void 
+ * @throws Error 
+ */
 #[EnvironmentFileName('.env.yml')]
 function main(
     #[Environment('projects')] array $projects,
 ) {
     chdir(dirname(__FILE__));
-    foreach($projects as $project){
+    foreach($projects as $project => $options){
+        if($project === "dev-tools"){
+            // skip self
+            continue;
+        }
         yield export($project, match($project){
             "svelte-starter" => ['bin','.github','start','.php-cs-fixer.php'],
             default => ['bin','.vscode','.github','start','.php-cs-fixer.php'],
