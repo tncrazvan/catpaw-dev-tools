@@ -1,13 +1,20 @@
 #!/usr/bin/env php
 <?php
+/**
+ * @psalm-type ProjectName = "dev-tools" | "core" | "cli" | "environment" | "examples" | "mysql" | "mysql-dbms" | "optional" | "queue" | "raspberrypi" | "starter" | "store" | "web" | "cui" | "spa" | "web-starter" | "svelte-starter"
+ */
 
 use CatPaw\Environment\Attributes\Environment;
 use CatPaw\Environment\Attributes\EnvironmentFileName;
-use CatPaw\Environment\Services\EnvironmentService;
 
 use function Amp\call;
 use function CatPaw\execute;
 
+/**
+ * @param array<ProjectName,array{version:string,message:string}> $projects 
+ * @return void
+ * @throws Error
+ */
 #[EnvironmentFileName('.env.yml')]
 function main(
     #[Environment('projects')] array $projects,
@@ -27,7 +34,7 @@ function main(
     #Delete local tasg.
     yield execute("git tag -l | xargs git tag -d",$cwd);
 
-    foreach($projects as $project){
+    foreach($projects as $project => $options){
         echo "Tagging project catpaw-$project".PHP_EOL;
         $cwd = "$root/catpaw-$project";
         call(function() use($cwd){

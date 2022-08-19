@@ -50,7 +50,7 @@ function export(string $root, mixed $project, array $items):Promise {
 
 
 /**
- * @param array<ProjectName> $projects
+ * @param array<ProjectName,array{version:string,message:string}> $projects 
  * @return void
  * @throws Error
  */
@@ -61,7 +61,7 @@ function main(
     chdir(dirname(__FILE__));
     $root = realpath('../../');
 
-    foreach($projects as $project){
+    foreach($projects as $project => $options){
         if($project === "dev-tools"){
             // skip self
             continue;
