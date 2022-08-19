@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+use CatPaw\Environment\Attributes\Environment;
+use CatPaw\Environment\Attributes\EnvironmentFileName;
+
+use function Amp\File\read;
+
+#[EnvironmentFileName('.env.yml')]
+function main(
+    #[Environment('projects')] array $projects,
+){
+    chdir(dirname(__FILE__));
+    $version = yield read('./version');
+
+    echo "Taggin project catpaw-dev-tools".PHP_EOL;
+    `git add .`;
+    `git commit -m"Commit before tag $version"`;
+    `git push`;
+    `git tag -a "$version"`;
+    `git push --tags`;
+
+    foreach($projects as $project){
+        chdir("../catpaw-$project");
+        echo "Taggin project catpaw-$project".PHP_EOL;
+        `git add .`;
+        `git commit -m"Commit before tag $version"`;
+        `git push`;
+        `git tag -a "$version"`;
+        `git push --tags`;
+    }
+}

@@ -1,0 +1,53 @@
+#!/usr/bin/env php
+<?php
+use function Amp\call;
+use function Amp\File\createDirectoryRecursively;
+use function Amp\File\exists;
+use function Amp\File\isFile;
+use Amp\Promise;
+use CatPaw\Environment\Attributes\Environment;
+use CatPaw\Environment\Attributes\EnvironmentFileName;
+
+use function CatPaw\copyDirectoryRecursively;
+
+use function CatPaw\copyFile;
+use function CatPaw\deleteDirectoryRecursively;
+use Psr\Log\LoggerInterface;
+
+function export(string $project, array $items):Promise {
+    return call(function() use ($project, $items) {
+        foreach ($items as $item) {
+            $source      = "./$item";
+            $destination = "../catpaw-$project/$item";
+            if (!yield exists($source)) {
+                echo "Skipping source file \"$source\" because it doesn't exist.".PHP_EOL;
+                continue;
+            }
+            if (yield isFile($source)) {
+                $ddirname = dirname($destination);
+                if (!yield exists($ddirname)) {
+                    yield createDirectoryRecursively($ddirname);
+                }
+                yield copyFile($source, $destination);
+                continue;
+            }
+            if (yield exists($destination)) {
+                yield deleteDirectoryRecursively($destination);
+            }
+            yield copyDirectoryRecursively($source, $destination);
+        }
+    });
+}
+
+#[EnvironmentFileName('.env.yml')]
+function main(
+    #[Environment('projects')] array $projects,
+) {
+    chdir(dirname(__FILE__));
+    foreach($projects as $project){
+        yield export($project, match($project){
+            "svelte-starter" => ['bin','.github','start','.php-cs-fixer.php'],
+            default => ['bin','.vscode','.github','start','.php-cs-fixer.php'],
+        });
+    }
+}
