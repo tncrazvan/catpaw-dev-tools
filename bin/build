@@ -29,7 +29,7 @@ function main(
     $library = realpath(str_replace(['"',"\n"], ['\\"',''], $library));
     
     // $project = '.';
-    $filename = 'dist/app.phar';
+    $app = 'dist/app.phar';
     $start = 'dist/start';
     try {
 
@@ -64,15 +64,15 @@ function main(
         );
         PHP);
 
-        if (yield exists($filename)) {
-            yield deleteFile($filename);
+        if (yield exists($app)) {
+            yield deleteFile($app);
         }
 
-        if (yield exists($filename . '.gz')) {
-            yield deleteFile($filename . '.gz');
+        if (yield exists($app . '.gz')) {
+            yield deleteFile($app . '.gz');
         }
         
-        $phar = new Phar($filename);
+        $phar = new Phar($app);
 
         $phar->startBuffering();
 
@@ -111,11 +111,11 @@ function main(
         $phar->compressFiles(Phar::GZ);
 
         # Make the file executable
-        chmod($filename, 0770);
+        chmod($app, 0770);
 
         yield deleteFile($start);
 
-        echo "$filename successfully created" . PHP_EOL;
+        echo "$app successfully created" . PHP_EOL;
     } catch (Exception $e) {
         die(((string)$e).PHP_EOL);
     }

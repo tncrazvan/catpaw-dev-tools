@@ -1,53 +1,36 @@
 
 projects:
   dev-tools:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   core:
-    version: 0.2.4
-    message : "listFilesRecursively fixed"
+    version: 0.2.5
   cli:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   environment:
-    version: 0.2.4
-    message : "fixing default values for attributes"
+    version: 0.2.5
   examples:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   mysql:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   mysql-dbms:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   optional:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   queue:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   raspberrypi:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   starter:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   store:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   web:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   cui:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   spa:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   web-starter:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
   svelte-starter:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.5
