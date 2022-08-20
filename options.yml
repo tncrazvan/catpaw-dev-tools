@@ -1,36 +1,36 @@
 
 projects:
   dev-tools:
-    version: 0.2.22
+    version: 0.2.23
   core:
-    version: 0.2.22
+    version: 0.2.23
   cli:
-    version: 0.2.22
+    version: 0.2.23
   environment:
-    version: 0.2.22
+    version: 0.2.23
   examples:
-    version: 0.2.22
+    version: 0.2.23
   mysql:
-    version: 0.2.22
+    version: 0.2.23
   mysql-dbms:
-    version: 0.2.22
+    version: 0.2.23
   optional:
-    version: 0.2.22
+    version: 0.2.23
   queue:
-    version: 0.2.22
+    version: 0.2.23
   raspberrypi:
-    version: 0.2.22
+    version: 0.2.23
   starter:
-    version: 0.2.22
+    version: 0.2.23
   store:
-    version: 0.2.22
+    version: 0.2.23
   web:
-    version: 0.2.22
+    version: 0.2.23
   cui:
-    version: 0.2.22
+    version: 0.2.23
   spa:
-    version: 0.2.22
+    version: 0.2.23
   web-starter:
-    version: 0.2.22
+    version: 0.2.23
   svelte-starter:
-    version: 0.2.22
+    version: 0.2.23
