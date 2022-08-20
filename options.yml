@@ -3,7 +3,7 @@ projects:
   dev-tools:
     version: 0.2.5
   core:
-    version: 0.2.7
+    version: 0.2.8
   cli:
     version: 0.2.5
   environment:
