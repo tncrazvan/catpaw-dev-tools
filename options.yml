@@ -25,7 +25,9 @@ projects:
   store:
     version: 0.2.11
   web:
-    version: 0.2.12
+    version: 0.2.13
+    message: >
+      fixed an issue which caused InputStreams to overwrite some headers on the response
   cui:
     version: 0.2.11
   spa:
