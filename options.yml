@@ -1,38 +1,36 @@
 
 projects:
   dev-tools:
-    version: 0.2.11
+    version: 0.2.17
   core:
-    version: 0.2.11
+    version: 0.2.17
   cli:
-    version: 0.2.11
+    version: 0.2.17
   environment:
-    version: 0.2.11
+    version: 0.2.17
   examples:
-    version: 0.2.11
+    version: 0.2.17
   mysql:
-    version: 0.2.11
+    version: 0.2.17
   mysql-dbms:
-    version: 0.2.11
+    version: 0.2.17
   optional:
-    version: 0.2.11
+    version: 0.2.17
   queue:
-    version: 0.2.11
+    version: 0.2.17
   raspberrypi:
-    version: 0.2.11
+    version: 0.2.17
   starter:
-    version: 0.2.11
+    version: 0.2.17
   store:
-    version: 0.2.11
+    version: 0.2.17
   web:
-    version: 0.2.16
-    message: >
-      Fixed an issue which caused the server to clear sessions on restart
+    version: 0.2.17
   cui:
-    version: 0.2.11
+    version: 0.2.17
   spa:
-    version: 0.2.11
+    version: 0.2.17
   web-starter:
-    version: 0.2.11
+    version: 0.2.17
   svelte-starter:
-    version: 0.2.11
+    version: 0.2.17
