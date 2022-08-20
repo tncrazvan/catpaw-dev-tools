@@ -25,7 +25,9 @@ projects:
   store:
     version: 0.2.11
   web:
-    version: 0.2.15
+    version: 0.2.16
+    message: >
+      Fixed an issue which caused the server to clear sessions on restart
   cui:
     version: 0.2.11
   spa:
