@@ -5,7 +5,7 @@ projects:
     message : "fixing versions"
   core:
     version: 0.2.2
-    message : "fixing versions"
+    message : "listFilesRecursively now has an ignore parameter"
   cli:
     version: 0.2.3
     message : "fixing versions"

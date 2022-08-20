@@ -9,6 +9,7 @@ use function Amp\File\deleteFile;
 use function Amp\File\exists;
 use function Amp\File\write;
 use function CatPaw\deleteDirectoryRecursively;
+use function CatPaw\listFilesRecursively;
 
 /**
  * 
@@ -74,6 +75,9 @@ function main(
         $phar->startBuffering();
 
         $phar->buildFromDirectory('.');
+
+        // yield listFilesRecursively()
+
 
         $phar->setStub(
             '#!/usr/bin/env php'
