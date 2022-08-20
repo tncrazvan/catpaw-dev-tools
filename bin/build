@@ -74,9 +74,11 @@ function main(
 
         $phar->startBuffering();
 
-        $phar->buildFromDirectory('.');
+        // $phar->buildFromDirectory('.');
 
-        // yield listFilesRecursively()
+        foreach(yield listFilesRecursively('.',['.git']) as $filename){
+            $phar->addFile($filename);
+        }
 
 
         $phar->setStub(

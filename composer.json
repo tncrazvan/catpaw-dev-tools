@@ -35,7 +35,7 @@
     "catpaw/core": "^0.2",
     "amphp/amp": "^2.6",
     "amphp/file": "^2.0",
-    "catpaw/environment": "^0.1.2"
+    "catpaw/environment": "^0.2"
   },
   "autoload-dev": {
     "Tests\\": "tests/"
