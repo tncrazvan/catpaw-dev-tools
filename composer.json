@@ -15,7 +15,7 @@
     "export": "XDEBUG_MODE='off' php ./bin/start -esrc/@export",
     "tag": "XDEBUG_MODE='off' php ./bin/start -esrc/@tag",
     "delete:all:tags": "XDEBUG_MODE='off' php ./bin/start -esrc/@delete:all:tags",
-    "build": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -ebin/build"
+    "build": "XDEBUG_MODE='debug' php -dphar.readonly=0 ./bin/start -ebin/build"
   },
   "authors": [
     {

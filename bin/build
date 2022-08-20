@@ -7,6 +7,7 @@ use CatPaw\Environment\Attributes\EnvironmentFileName;
 use function Amp\File\createDirectory;
 use function Amp\File\deleteFile;
 use function Amp\File\exists;
+use function Amp\File\isFile;
 use function Amp\File\write;
 use function CatPaw\deleteDirectoryRecursively;
 use function CatPaw\listFilesRecursively;
@@ -21,6 +22,7 @@ function main(
     #[Environment("name")] string $name,
     #[Environment("entry")] string $entry,
     #[Environment("library")] string $library,
+    #[Environment("ignore")] ?array $ignore = [],
 ){
     $name = str_replace(['"',"\n"], ['\\"',''], $name);
     $entry = realpath(str_replace(['"',"\n"], ['\\"',''], $entry));
@@ -74,12 +76,27 @@ function main(
 
         $phar->startBuffering();
 
-        // $phar->buildFromDirectory('.');
+        $phar->buildFromDirectory('.');
 
-        foreach(yield listFilesRecursively('.',['.git']) as $filename){
-            $phar->addFile($filename);
+        $directories = [];
+
+        foreach(yield listFilesRecursively('.', $ignore) as $filename){
+            do {
+                $pieces  = explode(DIRECTORY_SEPARATOR,$filename);
+                $count = count($pieces);
+                if($count <= 2){
+                    break;
+                }
+                $filename = join(DIRECTORY_SEPARATOR,array_slice($pieces,0,$count-1));
+            } while(true);
+
+
+            if(yield isFile($filename)) {
+                $phar->addFile($filename);
+            } else {
+                $directories[$filename] = false;
+            }
         }
-
 
         $phar->setStub(
             '#!/usr/bin/env php'

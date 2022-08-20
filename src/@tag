@@ -21,8 +21,6 @@ use function CatPaw\execute;
 #[EnvironmentFileName('options.yml')]
 function main(
     #[Environment('projects')] array $projects,
-    #[Environment('version')] string $version,
-    #[Environment('message')] string $message,
 ){
     chdir(dirname(__FILE__));
     $root = realpath('../../');

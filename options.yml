@@ -10,8 +10,8 @@ projects:
     version: 0.2.3
     message : "fixing versions"
   environment:
-    version: 0.2.3
-    message : "fixing versions"
+    version: 0.2.4
+    message : "fixing default values for attributes"
   examples:
     version: 0.2.3
     message : "fixing versions"
