@@ -16,7 +16,8 @@
     "tag": "XDEBUG_MODE='off' php ./bin/start -e./src/@tag",
     "delete:all:tags": "XDEBUG_MODE='off' php ./bin/start -e./src/@delete:all:tags",
     "build": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -e./bin/build",
-    "build:catpaw": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -e./bin:dev/build"
+    "build:catpaw": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -e./bin:dev/build",
+    "use:catpaw": "sudo mkdir -p /usr/lib/catpaw && sudo mv dist/catpaw.phar /usr/lib/catpaw/catpaw.phar"
   },
   "authors": [
     {
