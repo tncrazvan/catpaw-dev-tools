@@ -31,6 +31,6 @@ projects:
   spa:
     version: 0.2.32
   web-starter:
-    version: 0.2.33
+    version: 0.2.34
   svelte-starter:
     version: 0.2.32
