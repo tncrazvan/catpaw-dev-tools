@@ -1,60 +1,57 @@
 {
-  "name": "catpaw/starter",
-  "type": "project",
-  "description": "A php CatPaw starter template",
-  "homepage": "https://github.com/tncrazvan/catpaw-starter",
-  "license": "MIT",
-  "scripts": {
-    "load": "XDEBUG_MODE='off' composer dump-autoload -o",
-    "fix": [
-      "XDEBUG_MODE='off' php ./vendor/bin/php-cs-fixer fix src",
-      "XDEBUG_MODE='off' php ./vendor/bin/php-cs-fixer fix tests"
+    "name": "catpaw/starter",
+    "type": "project",
+    "description": "A php CatPaw starter template",
+    "homepage": "https://github.com/tncrazvan/catpaw-starter",
+    "license": "MIT",
+    "scripts": {
+        "load": "XDEBUG_MODE='off' composer dump-autoload -o",
+        "fix": [
+            "XDEBUG_MODE='off' php ./vendor/bin/php-cs-fixer fix src",
+            "XDEBUG_MODE='off' php ./vendor/bin/php-cs-fixer fix tests"
+        ],
+        "action:test": [],
+        "test": [],
+        "export": "XDEBUG_MODE='off' php ./bin/start -e./src/export.php",
+        "sync": "XDEBUG_MODE='off' php ./bin/start -e./src/sync.php",
+        "delete:all:tags": "XDEBUG_MODE='off' php ./bin/start -e./src/delete:all:tags.php",
+        "build": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -e./bin/build"
+    },
+    "authors": [
+        {
+            "name": "Razvan Tanase",
+            "email": "tangent.jotey@gmail.com",
+            "homepage": "https://github.com/tncrazvan",
+            "role": "Developer"
+        }
     ],
-    "action:test": [],
-    "test": [],
-    "export": "XDEBUG_MODE='off' php ./bin/start -e./src/@export",
-    "tag": "XDEBUG_MODE='off' php ./bin/start -e./src/@tag",
-    "delete:all:tags": "XDEBUG_MODE='off' php ./bin/start -e./src/@delete:all:tags",
-    "build": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -e./bin/build",
-    "build:catpaw": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -e./bin:dev/build",
-    "use:catpaw": "sudo mkdir -p /usr/lib/catpaw && sudo mv dist/catpaw.phar /usr/lib/catpaw/catpaw.phar"
-  },
-  "authors": [
-    {
-      "name": "Razvan Tanase",
-      "email": "tangent.jotey@gmail.com",
-      "homepage": "https://github.com/tncrazvan",
-      "role": "Developer"
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/lib/"
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "catpaw/core": "^0.2",
+        "amphp/amp": "^2.6",
+        "amphp/file": "^2.0",
+        "catpaw/web": "^0.2",
+        "catpaw/queue": "^0.2",
+        "catpaw/mysql": "^0.2",
+        "catpaw/raspberrypi": "^0.2",
+        "catpaw/store": "^0.2",
+        "catpaw/cui": "^0.2"
+    },
+    "autoload-dev": {
+        "Tests\\": "tests/"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "phpunit/phpunit": "^9",
+        "vimeo/psalm": "^4.23"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "process-timeout": 0
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "App\\": "src/lib/"
-    }
-  },
-  "require": {
-    "php": "^8.1",
-    "catpaw/core": "^0.2",
-    "amphp/amp": "^2.6",
-    "amphp/file": "^2.0",
-    "catpaw/environment": "^0.2",
-    "catpaw/web": "^0.2",
-    "catpaw/queue": "^0.2",
-    "catpaw/mysql": "^0.2",
-    "catpaw/raspberrypi": "^0.2",
-    "catpaw/store": "^0.2",
-    "catpaw/cui": "^0.2"
-  },
-  "autoload-dev": {
-    "Tests\\": "tests/"
-  },
-  "require-dev":{
-    "friendsofphp/php-cs-fixer": "^3.8",
-    "phpunit/phpunit": "^9",
-    "vimeo/psalm": "^4.23"
-  },
-  "config": {
-    "preferred-install": "dist",
-    "process-timeout": 0
-  }
 }
