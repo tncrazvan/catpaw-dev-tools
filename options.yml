@@ -3,6 +3,8 @@ projects:
     version: 0.2.44
   core:
     version: 0.2.44
+  web:
+    version: 0.2.45
   cli:
     version: 0.2.44
   examples:
@@ -20,8 +22,6 @@ projects:
   starter:
     version: 0.2.44
   store:
-    version: 0.2.44
-  web:
     version: 0.2.44
   cui:
     version: 0.2.44
