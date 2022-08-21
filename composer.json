@@ -15,7 +15,8 @@
     "export": "XDEBUG_MODE='off' php ./bin/start -e./src/@export",
     "tag": "XDEBUG_MODE='off' php ./bin/start -e./src/@tag",
     "delete:all:tags": "XDEBUG_MODE='off' php ./bin/start -e./src/@delete:all:tags",
-    "build": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -e./bin/build"
+    "build": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -e./bin/build",
+    "build:catpaw": "XDEBUG_MODE='off' php -dphar.readonly=0 ./bin/start -e./bin:dev/build"
   },
   "authors": [
     {
@@ -35,7 +36,13 @@
     "catpaw/core": "^0.2",
     "amphp/amp": "^2.6",
     "amphp/file": "^2.0",
-    "catpaw/environment": "^0.2"
+    "catpaw/environment": "^0.2",
+    "catpaw/web": "^0.2",
+    "catpaw/queue": "^0.2",
+    "catpaw/mysql": "^0.2",
+    "catpaw/raspberrypi": "^0.2",
+    "catpaw/store": "^0.2",
+    "catpaw/cui": "^0.2"
   },
   "autoload-dev": {
     "Tests\\": "tests/"

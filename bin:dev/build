@@ -7,7 +7,7 @@ use CatPaw\Environment\Attributes\EnvironmentFileName;
 use function Amp\File\createDirectoryRecursively;
 use function Amp\File\deleteFile;
 use function Amp\File\exists;
-use function Amp\File\write;
+use function CatPaw\copyFile;
 use function CatPaw\deleteDirectoryRecursively;
 
 /**
@@ -43,7 +43,7 @@ function main(
         }
     }
 
-    $app = 'dist/app.phar';
+    $app = 'dist/catpaw.phar';
     $start = 'dist/start';
 
     $dirnameStart = dirname($start);
@@ -55,30 +55,7 @@ function main(
 
         yield createDirectoryRecursively($dirnameStart);
 
-        yield write($start,<<<PHP
-        <?php
-        use Amp\File\Filesystem;
-        use Amp\Loop;
-        use CatPaw\Amp\File\CatPawDriver;
-        use CatPaw\Bootstrap;
-        \$_ENV = [
-            ...\$_ENV,
-            ...getenv(),
-        ];
-        require 'vendor/autoload.php';
-
-        if (isset(\$_ENV["CATPAW_FILE_DRIVER"]) && \$_ENV["CATPAW_FILE_DRIVER"]) {
-            Loop::setState(\Amp\File\Driver::class, new Filesystem(new CatPawDriver));
-        }
-        Bootstrap::start(
-            entry: "$entry",
-            name: "$name",
-            library: "$library",
-            info: false,
-            dieOnChange: false,
-            resources: '',
-        );
-        PHP);
+        yield copyFile('bin/start',$start);
 
         if (yield exists($app)) {
             yield deleteFile($app);
