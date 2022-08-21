@@ -3,7 +3,7 @@ projects:
   dev-tools:
     version: 0.2.32
   core:
-    version: 0.2.32
+    version: 0.2.33
   cli:
     version: 0.2.32
   environment:
@@ -25,7 +25,7 @@ projects:
   store:
     version: 0.2.32
   web:
-    version: 0.2.33
+    version: 0.2.34
   cui:
     version: 0.2.32
   spa:
