@@ -25,7 +25,7 @@ projects:
   store:
     version: 0.2.32
   web:
-    version: 0.2.32
+    version: 0.2.33
   cui:
     version: 0.2.32
   spa:
