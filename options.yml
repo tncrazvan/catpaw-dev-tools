@@ -3,7 +3,8 @@ projects:
   dev-tools:
     version: 0.2.25
   core:
-    version: 0.2.25
+    version: 0.2.26
+    message: <\CatPaw\Strings::tableFromArray> refactored as <function \CatPaw\tableFromArray>
   cli:
     version: 0.2.25
   environment:
