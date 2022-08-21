@@ -7,7 +7,7 @@ projects:
   cli:
     version: 0.2.25
   environment:
-    version: 0.2.25
+    version: 0.2.26
   examples:
     version: 0.2.25
   mysql:
