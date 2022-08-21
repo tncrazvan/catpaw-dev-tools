@@ -4,7 +4,7 @@ projects:
   core:
     version: 0.2.44
   web:
-    version: 0.2.45
+    version: 0.2.46
   cli:
     version: 0.2.44
   examples:
