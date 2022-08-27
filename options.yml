@@ -2,8 +2,8 @@ projects:
   dev-tools:
     version: 0.2.80
   core:
-    version: 0.2.81
-    message: fixed an issue with the EnvironmentService which caused the yaml environment file parser to crash if the yaml file was empty
+    version: 0.2.82
+    message: \CatPaw\execute() won't append PHP_EOL to the result anymore
   web:
     version: 0.2.80
   cli:
