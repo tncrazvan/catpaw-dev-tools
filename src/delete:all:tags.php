@@ -26,13 +26,13 @@ function main(
     echo "Deleting tags of project catpaw-dev-tools".PHP_EOL;
 
     #Delete local tags.
-    yield execute("git tag -l | xargs git tag -d", $cwd);
+    echo yield execute("git tag -l | xargs git tag -d", $cwd);
     #Fetch remote tags.
-    yield execute("git fetch", $cwd);
+    echo yield execute("git fetch", $cwd);
     #Delete remote tags.
-    yield execute("git tag -l | xargs git push --delete origin", $cwd);
+    echo yield execute("git tag -l | xargs git push --delete origin", $cwd);
     #Delete local tags.
-    yield execute("git tag -l | xargs git tag -d", $cwd);
+    echo yield execute("git tag -l | xargs git tag -d", $cwd);
 
     foreach ($projects as $project => $_) {
         echo "Tagging project catpaw-$project".PHP_EOL;
@@ -41,13 +41,13 @@ function main(
         // work in parallel on each project to speed things up
         call(function() use ($cwd) {
             #Delete local tags.
-            yield execute("git tag -l | xargs git tag -d", $cwd);
+            echo yield execute("git tag -l | xargs git tag -d", $cwd);
             #Fetch remote tags.
-            yield execute("git fetch", $cwd);
+            echo yield execute("git fetch", $cwd);
             #Delete remote tags.
-            yield execute("git tag -l | xargs git push --delete origin", $cwd);
+            echo yield execute("git tag -l | xargs git push --delete origin", $cwd);
             #Delete local tags.
-            yield execute("git tag -l | xargs git tag -d", $cwd);
+            echo yield execute("git tag -l | xargs git tag -d", $cwd);
         });
     }
 }

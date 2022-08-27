@@ -49,11 +49,12 @@ function main(
         yield write($composeFileName, str_replace('\/', '/', yield read($composeFileName)));
 
         call(function() use ($version, $message, $cwd) {
-            yield execute("git add .", $cwd);
-            yield execute("git commit -m\"$message\"", $cwd);
-            yield execute("git push", $cwd);
-            yield execute("git tag -a \"$version\" -m\"$message\"", $cwd);
-            yield execute("git push --tags", $cwd);
+            echo yield execute("rm composer.lock", $cwd);
+            echo yield execute("git add .", $cwd);
+            echo yield execute("git commit -m\"$message\"", $cwd);
+            echo yield execute("git push", $cwd);
+            echo yield execute("git tag -a \"$version\" -m\"$message\"", $cwd);
+            echo yield execute("git push --tags", $cwd);
         });
     }
 
