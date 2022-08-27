@@ -2,7 +2,8 @@ projects:
   dev-tools:
     version: 0.2.80
   core:
-    version: 0.2.80
+    version: 0.2.81
+    message: fixed an issue with the EnvironmentService which caused the yaml environment file parser to crash if the yaml file was empty
   web:
     version: 0.2.80
   cli:
