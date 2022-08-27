@@ -4,21 +4,21 @@
  * @psalm-type ProjectName = "dev-tools" | "core" | "cli" | "environment" | "examples" | "mysql" | "mysql-dbms" | "optional" | "queue" | "raspberrypi" | "starter" | "store" | "web" | "cui" | "spa" | "web-starter" | "svelte-starter"
  */
 
-use CatPaw\Environment\Attributes\Environment;
-use CatPaw\Environment\Attributes\EnvironmentFileName;
-
 use function Amp\call;
+use CatPaw\Environment\Attributes\Environment;
+
+use CatPaw\Environment\Attributes\EnvironmentFileName;
 use function CatPaw\execute;
 
 /**
- * @param array<ProjectName,array{version:string,message:string}> $projects 
- * @return void
+ * @param  array<ProjectName,array{version:string,message:string}> $projects
  * @throws Error
+ * @return void
  */
 #[EnvironmentFileName('options.yml')]
 function main(
     #[Environment('projects')] array $projects,
-){
+) {
     chdir(dirname(__FILE__));
     $root = realpath('../../');
 
@@ -26,26 +26,28 @@ function main(
     echo "Deleting tags of project catpaw-dev-tools".PHP_EOL;
 
     #Delete local tags.
-    yield execute("git tag -l | xargs git tag -d",$cwd);
+    yield execute("git tag -l | xargs git tag -d", $cwd);
     #Fetch remote tags.
-    yield execute("git fetch",$cwd);
+    yield execute("git fetch", $cwd);
     #Delete remote tags.
-    yield execute("git tag -l | xargs git push --delete origin",$cwd);
-    #Delete local tasg.
-    yield execute("git tag -l | xargs git tag -d",$cwd);
+    yield execute("git tag -l | xargs git push --delete origin", $cwd);
+    #Delete local tags.
+    yield execute("git tag -l | xargs git tag -d", $cwd);
 
-    foreach($projects as $project => $options){
+    foreach ($projects as $project => $_) {
         echo "Tagging project catpaw-$project".PHP_EOL;
         $cwd = "$root/catpaw-$project";
-        call(function() use($cwd){
+        
+        // work in parallel on each project to speed things up
+        call(function() use ($cwd) {
             #Delete local tags.
-            yield execute("git tag -l | xargs git tag -d",$cwd);
+            yield execute("git tag -l | xargs git tag -d", $cwd);
             #Fetch remote tags.
-            yield execute("git fetch",$cwd);
+            yield execute("git fetch", $cwd);
             #Delete remote tags.
-            yield execute("git tag -l | xargs git push --delete origin",$cwd);
-            #Delete local tasg.
-            yield execute("git tag -l | xargs git tag -d",$cwd);
+            yield execute("git tag -l | xargs git push --delete origin", $cwd);
+            #Delete local tags.
+            yield execute("git tag -l | xargs git tag -d", $cwd);
         });
     }
 }
