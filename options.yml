@@ -3,7 +3,6 @@ projects:
     version: 0.2.80
   core:
     version: 0.2.82
-    message: \CatPaw\execute() won't append PHP_EOL to the result anymore
   web:
     version: 0.2.80
   cli:
