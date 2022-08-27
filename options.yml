@@ -2,7 +2,7 @@ projects:
   dev-tools:
     version: 0.2.50
   core:
-    version: 0.2.51
+    version: 0.2.52
   web:
     version: 0.2.50
   cli:
