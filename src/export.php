@@ -9,18 +9,18 @@ use function Amp\File\createDirectoryRecursively;
 use function Amp\File\exists;
 use function Amp\File\isFile;
 use Amp\Promise;
+use function CatPaw\copyDirectoryRecursively;
+use function CatPaw\copyFile;
+
+use function CatPaw\deleteDirectoryRecursively;
+
 use CatPaw\Environment\Attributes\Environment;
 use CatPaw\Environment\Attributes\EnvironmentFileName;
 
-use function CatPaw\copyDirectoryRecursively;
-
-use function CatPaw\copyFile;
-use function CatPaw\deleteDirectoryRecursively;
-
 /**
- * @param string $root
- * @param ProjectName $project
- * @param array $items
+ * @param  string      $root
+ * @param  ProjectName $project
+ * @param  array       $items
  * @return Promise
  */
 function export(string $root, mixed $project, array $items):Promise {
@@ -50,25 +50,25 @@ function export(string $root, mixed $project, array $items):Promise {
 
 
 /**
- * @param array<ProjectName,array{version:string,message:string}> $projects 
- * @return void
+ * @param  array<ProjectName,array{version:string,message:string}> $projects
  * @throws Error
+ * @return void
  */
 #[EnvironmentFileName('options.yml')]
 function main(
     #[Environment('projects')] array $projects,
-){
+) {
     chdir(dirname(__FILE__));
     $root = realpath('../../');
 
-    foreach($projects as $project => $options){
-        if($project === "dev-tools"){
+    foreach ($projects as $project => $options) {
+        if ("dev-tools" === $project) {
             // skip self
             continue;
         }
-        export($root, $project, match($project){
-            "svelte-starter" => ['bin','.github','start','.php-cs-fixer.php','psalm.xml','build.yml'],
-            default => ['bin','.vscode','.github','start','.php-cs-fixer.php','psalm.xml','build.yml'],
+        export($root, $project, match ($project) {
+            "svelte-starter" => ['bin','.github','.php-cs-fixer.php','psalm.xml','build.yml'],
+            default          => ['bin','.vscode','.github','.php-cs-fixer.php','psalm.xml','build.yml'],
         });
     }
 }
