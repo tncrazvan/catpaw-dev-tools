@@ -3,7 +3,6 @@ projects:
     version: 0.2.85
   core:
     version: 0.2.86
-    message: Fixing an issue with the dev watcher which made the watched linger forever when a watched directory did not exist
   web:
     version: 0.2.85
   cli:
@@ -25,7 +24,7 @@ projects:
   store:
     version: 0.2.85
   cui:
-    version: 0.2.85
+    version: 0.2.86
   spa:
     version: 0.2.85
   web-starter:
