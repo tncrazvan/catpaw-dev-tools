@@ -6,7 +6,7 @@ projects:
   web:
     version: 0.2.85
   cli:
-    version: 0.2.87
+    version: 0.2.88
   examples:
     version: 0.2.85
   mysql:
