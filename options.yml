@@ -24,7 +24,7 @@ projects:
   store:
     version: 0.2.85
   cui:
-    version: 0.2.86
+    version: 0.2.87
   spa:
     version: 0.2.85
   web-starter:
