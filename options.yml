@@ -6,7 +6,7 @@ projects:
   web:
     version: 0.2.85
   cli:
-    version: 0.2.85
+    version: 0.2.86
   examples:
     version: 0.2.85
   mysql:
@@ -24,7 +24,7 @@ projects:
   store:
     version: 0.2.85
   cui:
-    version: 0.2.87
+    version: 0.2.88
   spa:
     version: 0.2.85
   web-starter:
