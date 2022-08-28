@@ -2,7 +2,8 @@ projects:
   dev-tools:
     version: 0.2.85
   core:
-    version: 0.2.85
+    version: 0.2.86
+    message: Fixing an issue with the dev watcher which made the watched linger forever when a watched directory did not exist
   web:
     version: 0.2.85
   cli:
