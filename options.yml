@@ -28,6 +28,6 @@ projects:
   spa:
     version: 0.3.1
   web-starter:
-    version: 0.3.1
+    version: 0.3.2
   svelte-starter:
     version: 0.3.1
