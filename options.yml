@@ -1,33 +1,34 @@
 projects:
   dev-tools:
-    version: 0.2.99
+    version: 0.3.0
   core:
-    version: 0.2.99
+    version: 0.3.0
   web:
-    version: 0.2.99
+    version: 0.3.0
+    message: It is now possible to declares routes using the file system.
   cli:
-    version: 0.2.99
+    version: 0.3.0
   examples:
-    version: 0.2.99
+    version: 0.3.0
   mysql:
-    version: 0.2.99
+    version: 0.3.0
   mysql-dbms:
-    version: 0.2.99
+    version: 0.3.0
   optional:
-    version: 0.2.99
+    version: 0.3.0
   queue:
-    version: 0.2.99
+    version: 0.3.0
   raspberrypi:
-    version: 0.2.99
+    version: 0.3.0
   starter:
-    version: 0.2.99
+    version: 0.3.0
   store:
-    version: 0.2.99
+    version: 0.3.0
   cui:
-    version: 0.2.99
+    version: 0.3.0
   spa:
-    version: 0.2.99
+    version: 0.3.0
   web-starter:
-    version: 0.2.99
+    version: 0.3.0
   svelte-starter:
-    version: 0.2.99
+    version: 0.3.0
