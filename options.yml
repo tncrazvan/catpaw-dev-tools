@@ -1,33 +1,33 @@
 projects:
   dev-tools:
-    arrayversion: 0.2.99
+    version: 0.2.99
   core:
-    arrayversion: 0.2.99
+    version: 0.2.99
   web:
-    arrayversion: 0.2.99
+    version: 0.2.99
   cli:
-    arrayversion: 0.2.99
+    version: 0.2.99
   examples:
-    arrayversion: 0.2.99
+    version: 0.2.99
   mysql:
-    arrayversion: 0.2.99
+    version: 0.2.99
   mysql-dbms:
-    arrayversion: 0.2.99
+    version: 0.2.99
   optional:
-    arrayversion: 0.2.99
+    version: 0.2.99
   queue:
-    arrayversion: 0.2.99
+    version: 0.2.99
   raspberrypi:
-    arrayversion: 0.2.99
+    version: 0.2.99
   starter:
-    arrayversion: 0.2.99
+    version: 0.2.99
   store:
-    arrayversion: 0.2.99
+    version: 0.2.99
   cui:
-    arrayversion: 0.2.99
+    version: 0.2.99
   spa:
-    arrayversion: 0.2.99
+    version: 0.2.99
   web-starter:
-    arrayversion: 0.2.99
+    version: 0.2.99
   svelte-starter:
-    arrayversion: 0.2.99
+    version: 0.2.99
