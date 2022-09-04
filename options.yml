@@ -4,8 +4,7 @@ projects:
   core:
     version: 0.3.3
   web:
-    version: 0.3.4
-    message: replaced some constructor calls with factory method calls
+    version: 0.3.5
   cli:
     version: 0.3.3
   examples:
@@ -24,7 +23,6 @@ projects:
     version: 0.3.3
   store:
     version: 0.3.4
-    message: fixed Readable "callable" properties
   cui:
     version: 0.3.3
   spa:
