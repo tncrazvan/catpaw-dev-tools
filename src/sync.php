@@ -39,7 +39,7 @@ function main() {
 
         foreach ($composer['require'] as $rname => &$rversion) {
             if (str_starts_with($rname, "catpaw/")) {
-                $rversion = $mversion;
+                $rversion = "^$mversion";
             }
         }
 
