@@ -15,7 +15,7 @@ use function CatPaw\copyFile;
 use function CatPaw\deleteDirectoryRecursively;
 
 use CatPaw\Environment\Attributes\Environment;
-use CatPaw\Environment\Attributes\EnvironmentFileName;
+use CatPaw\Environment\Attributes\EnvironmentFile;
 
 /**
  * @param  string      $root
@@ -54,7 +54,7 @@ function export(string $root, mixed $project, array $items):Promise {
  * @throws Error
  * @return void
  */
-#[EnvironmentFileName('options.yml')]
+#[EnvironmentFile('options.yml')]
 function main(
     #[Environment('projects')] array $projects,
 ) {

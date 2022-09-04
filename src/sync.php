@@ -9,7 +9,7 @@ use function Amp\File\read;
 
 use function Amp\File\write;
 use CatPaw\Environment\Attributes\Environment;
-use CatPaw\Environment\Attributes\EnvironmentFileName;
+use CatPaw\Environment\Attributes\EnvironmentFile;
 use function CatPaw\execute;
 
 
@@ -20,7 +20,7 @@ use function CatPaw\execute;
  * @throws Error
  * @return Generator
  */
-#[EnvironmentFileName('options.yml')]
+#[EnvironmentFile('options.yml')]
 function main(
     #[Environment('projects')] array $projects,
 ) {
