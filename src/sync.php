@@ -38,7 +38,7 @@ function main() {
         $composer        = json_decode(yield read($composeFileName), true);
 
         foreach ($composer['require'] as $rname => &$rversion) {
-            if ($rname === "catpaw/$project") {
+            if (str_starts_with($rname, "catpaw/")) {
                 $rversion = $mversion;
             }
         }
