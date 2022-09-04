@@ -14,7 +14,6 @@ use function CatPaw\copyFile;
 
 use function CatPaw\deleteDirectoryRecursively;
 
-use CatPaw\Environment\Attributes\Environment;
 use CatPaw\Environment\Attributes\EnvironmentFile;
 
 /**
@@ -55,9 +54,9 @@ function export(string $root, mixed $project, array $items):Promise {
  * @return void
  */
 #[EnvironmentFile('options.yml')]
-function main(
-    #[Environment('projects')] array $projects,
-) {
+function main() {
+    /** @var array */
+    $projects = $_ENV['projects'] ?? [];
     chdir(dirname(__FILE__));
     $root = realpath('../../');
 

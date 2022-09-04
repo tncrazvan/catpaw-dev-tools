@@ -8,7 +8,6 @@ use function Amp\call;
 use function Amp\File\read;
 
 use function Amp\File\write;
-use CatPaw\Environment\Attributes\Environment;
 use CatPaw\Environment\Attributes\EnvironmentFile;
 use function CatPaw\execute;
 
@@ -21,9 +20,9 @@ use function CatPaw\execute;
  * @return Generator
  */
 #[EnvironmentFile('options.yml')]
-function main(
-    #[Environment('projects')] array $projects,
-) {
+function main() {
+    /** @var array */
+    $projects = $_ENV['projects'] ?? [];
     chdir(dirname(__FILE__));
     $root = realpath('../../');
 
