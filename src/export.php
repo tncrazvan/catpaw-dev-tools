@@ -7,7 +7,7 @@
 use function Amp\call;
 use function Amp\File\{createDirectoryRecursively, exists, isFile};
 use Amp\Promise;
-use CatPaw\Environment\Attributes\EnvironmentFiles;
+use CatPaw\Environment\Attributes\EnvironmentFile;
 use function CatPaw\{copyDirectoryRecursively, copyFile, deleteDirectoryRecursively};
 
 /**
@@ -47,7 +47,7 @@ function export(string $root, mixed $project, array $items):Promise {
  * @throws Error
  * @return void
  */
-#[EnvironmentFiles('options.yml')]
+#[EnvironmentFile('options.yml')]
 function main() {
     /** @var array */
     $projects = $_ENV['projects'] ?? [];
