@@ -5,9 +5,7 @@
  */
 
 use function Amp\call;
-use function Amp\File\read;
-
-use function Amp\File\write;
+use function Amp\File\{read, write};
 use CatPaw\Environment\Attributes\EnvironmentFile;
 use function CatPaw\execute;
 
@@ -48,6 +46,7 @@ function main() {
         yield write($composeFileName, str_replace('\/', '/', yield read($composeFileName)));
 
         call(function() use ($version, $message, $cwd) {
+            echo yield execute("composer fix", $cwd);
             echo yield execute("rm composer.lock", $cwd);
             echo yield execute("git add .", $cwd);
             echo yield execute("git commit -m\"$message\"", $cwd);

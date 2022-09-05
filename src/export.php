@@ -5,16 +5,10 @@
  */
 
 use function Amp\call;
-use function Amp\File\createDirectoryRecursively;
-use function Amp\File\exists;
-use function Amp\File\isFile;
+use function Amp\File\{createDirectoryRecursively, exists, isFile};
 use Amp\Promise;
-use function CatPaw\copyDirectoryRecursively;
-use function CatPaw\copyFile;
-
-use function CatPaw\deleteDirectoryRecursively;
-
 use CatPaw\Environment\Attributes\EnvironmentFile;
+use function CatPaw\{copyDirectoryRecursively, copyFile, deleteDirectoryRecursively};
 
 /**
  * @param  string      $root
