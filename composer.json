@@ -12,7 +12,7 @@
         ],
         "action:test": [],
         "test": [],
-        "sync": "XDEBUG_MODE=debug php ./bin/start -e./src/sync.php",
+        "sync": "XDEBUG_MODE=off php ./bin/start -e./src/sync.php",
         "export": "XDEBUG_MODE=off php ./bin/start -e./src/export.php",
         "build": "XDEBUG_MODE=off php -dphar.readonly=0 ./bin/start -e./bin/build"
     },
