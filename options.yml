@@ -1,33 +1,33 @@
 projects:
   dev-tools:
-    version: 0.4.2
+    version: 0.4.3
   core:
-    version: 0.4.2
+    version: 0.4.3
   web:
-    version: 0.4.2
+    version: 0.4.3
   cli:
-    version: 0.4.2
+    version: 0.4.3
   examples:
-    version: 0.4.2
+    version: 0.4.3
   mysql:
-    version: 0.4.2
+    version: 0.4.3
   mysql-dbms:
-    version: 0.4.2
+    version: 0.4.3
   optional:
-    version: 0.4.2
+    version: 0.4.3
   queue:
-    version: 0.4.2
+    version: 0.4.3
   raspberrypi:
-    version: 0.4.2
+    version: 0.4.3
   starter:
-    version: 0.4.2
+    version: 0.4.3
   store:
-    version: 0.4.2
+    version: 0.4.3
   cui:
-    version: 0.4.2
+    version: 0.4.3
   spa:
-    version: 0.4.2
+    version: 0.4.3
   web-starter:
-    version: 0.4.2
+    version: 0.4.3
   svelte-starter:
-    version: 0.4.2
+    version: 0.4.3
