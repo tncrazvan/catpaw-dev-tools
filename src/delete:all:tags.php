@@ -6,7 +6,7 @@
 
 use function Amp\call;
 
-use CatPaw\Environment\Attributes\EnvironmentFile;
+use CatPaw\Environment\Attributes\Environment;
 use function CatPaw\execute;
 
 /**
@@ -14,7 +14,7 @@ use function CatPaw\execute;
  * @throws Error
  * @return void
  */
-#[EnvironmentFile('options.yml')]
+#[Environemnt('options.yml')]
 function main() {
     /** @var array */
     $projects = $_ENV['projects'] ?? [];
