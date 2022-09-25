@@ -31,3 +31,5 @@ projects:
     version: 0.4.22
   svelte-starter:
     version: 0.4.22
+  server-linking:
+    version: 0.4.22
