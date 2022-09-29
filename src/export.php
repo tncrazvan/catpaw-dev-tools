@@ -47,7 +47,7 @@ function export(string $root, mixed $project, array $items):Promise {
  * @throws Error
  * @return void
  */
-#[Environemnt('options.yml')]
+#[Environment('options.yml')]
 function main() {
     /** @var array */
     $projects = $_ENV['projects'] ?? [];

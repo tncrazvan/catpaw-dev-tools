@@ -14,7 +14,7 @@ use function CatPaw\execute;
  * @throws Error
  * @return void
  */
-#[Environemnt('options.yml')]
+#[Environment('options.yml')]
 function main() {
     /** @var array */
     $projects = $_ENV['projects'] ?? [];
