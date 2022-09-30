@@ -1,4 +1,7 @@
+
 master: dev-tools
+
+prefix: catpaw
 
 exports:
   - "bin"

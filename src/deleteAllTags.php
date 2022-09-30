@@ -1,8 +1,4 @@
 <?php
-/**
- * @psalm-type ProjectName = "dev-tools" | "core" | "cli" | "environment" | "examples" | "mysql" | "mysql-dbms" | "optional" | "queue" | "raspberrypi" | "starter" | "store" | "web" | "cui" | "spa" | "web-starter" | "svelte-starter"
- */
-
 use function Amp\call;
 use Amp\Promise;
 use function CatPaw\execute;
@@ -13,14 +9,18 @@ use function CatPaw\execute;
  */
 function deleteAllTags():Promise {
     return call(function() {
-        /** @var array<ProjectName> */
+        /** @var array */
         $projects = $_ENV['projects'] ?? [];
+        /** @var string */
+        $prefix = $_ENV['prefix'] ?? '';
+        /** @var string */
+        $master = $_ENV['master'] ?? '';
 
         chdir(dirname(__FILE__));
         $root = realpath('../../');
 
-        $cwd = "$root/catpaw-dev-tools";
-        echo "Deleting tags of project catpaw-dev-tools".PHP_EOL;
+        $cwd = "$root/$prefix-$master";
+        echo "Deleting tags of project $prefix-$master".PHP_EOL;
 
         #Delete local tags.
         echo yield execute("git tag -l | xargs git tag -d", $cwd);
@@ -31,9 +31,9 @@ function deleteAllTags():Promise {
         #Delete local tags.
         echo yield execute("git tag -l | xargs git tag -d", $cwd);
 
-        foreach ($projects as $project => $_) {
-            echo "Tagging project catpaw-$project".PHP_EOL;
-            $cwd = "$root/catpaw-$project";
+        foreach ($projects as $name => $props) {
+            echo "Tagging project $prefix-$name".PHP_EOL;
+            $cwd = "$root/$prefix-$name";
             
             // work in parallel on each project to speed things up
             call(function() use ($cwd) {

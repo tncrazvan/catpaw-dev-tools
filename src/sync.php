@@ -1,8 +1,4 @@
 <?php
-/**
- * @psalm-type ProjectName = "dev-tools" | "core" | "cli" | "environment" | "examples" | "mysql" | "mysql-dbms" | "optional" | "queue" | "raspberrypi" | "starter" | "store" | "web" | "cui" | "spa" | "web-starter" | "svelte-starter"
- */
-
 use function Amp\call;
 use function Amp\File\{read, write};
 use Amp\Promise;
@@ -13,24 +9,26 @@ use function CatPaw\execute;
  */
 function sync():Promise {
     return call(function() {
-        /** @var array<ProjectName> */
+        /** @var array */
         $projects = $_ENV['projects'] ?? [];
+        /** @var string */
+        $prefix = $_ENV['prefix'] ?? '';
         chdir(dirname(__FILE__));
         $root = realpath('../../');
 
-        foreach ($projects as $project => $options) {
-            $version       = preg_replace('/"/', '\\"', $options['version']);
+        foreach ($projects as $name => $props) {
+            $version       = preg_replace('/"/', '\\"', $props['version']);
             $versionPieces = explode('.', $version);
             $mversion      = join('.', [$versionPieces[0] ?? '0',$versionPieces[1] ?? '0']);
-            $message       = preg_replace('/"/', '\\"', $options['message'] ?? "Version $version");
-            echo "Tagging project catpaw-$project".PHP_EOL;
-            $cwd = "$root/catpaw-$project";
+            $message       = preg_replace('/"/', '\\"', $props['message'] ?? "Version $version");
+            echo "Tagging project $prefix-$name".PHP_EOL;
+            $cwd = "$root/$prefix-$name";
 
             $composeFileName = "$cwd/composer.json";
             $composer        = json_decode(yield read($composeFileName), true);
 
             foreach ($composer['require'] as $rname => &$rversion) {
-                if (str_starts_with($rname, "catpaw/")) {
+                if (str_starts_with($rname, "$prefix/")) {
                     $rversion = "^$mversion";
                 }
             }
@@ -51,13 +49,13 @@ function sync():Promise {
         }
 
 
-        foreach ($projects as $project => $options) {
-            $version = preg_replace('/"/', '\\"', $options['version']);
-            $message = preg_replace('/"/', '\\"', $options['message'] ?? "Version $version");
+        foreach ($projects as $name => $props) {
+            $version = preg_replace('/"/', '\\"', $props['version']);
+            $message = preg_replace('/"/', '\\"', $props['message'] ?? "Version $version");
 
-            echo "Updating project catpaw-$project".PHP_EOL;
+            echo "Updating project $prefix-$name".PHP_EOL;
 
-            $cwd = "$root/catpaw-$project";
+            $cwd = "$root/$prefix-$name";
 
 
             call(function() use ($cwd) {
