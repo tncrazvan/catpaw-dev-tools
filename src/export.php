@@ -51,14 +51,17 @@ function export():Promise {
         chdir(dirname(__FILE__));
         $root = realpath('../../');
 
-        $mainProjectName = $_ENV['name'] ?? '';
+        $master = $_ENV['master'] ?? '';
 
         foreach ($projects as $name => $props) {
-            if ($mainProjectName === $name) {
+            if ($master === $name) {
                 // skip self
                 continue;
             }
-            $exports = $props['exports'] ?? $_ENV['exports'] ?? [];
+            $exports = $props['imports'] ?? $_ENV['exports'] ?? [];
+            if ('none' === $exports) {
+                $exports = [];
+            }
             exportProjectItems($root, $name, $exports);
         }
     });

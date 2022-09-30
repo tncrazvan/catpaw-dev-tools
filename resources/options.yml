@@ -1,4 +1,4 @@
-name: dev-tools
+master: dev-tools
 
 exports:
   - "bin"
@@ -41,7 +41,7 @@ projects:
     version: 0.4.27
   svelte-starter:
     version: 0.4.27
-    exports:
+    imports:
       - "bin"
       - ".github"
       - ".php-cs-fixer.php"
