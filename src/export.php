@@ -51,8 +51,10 @@ function export():Promise {
         chdir(dirname(__FILE__));
         $root = realpath('../../');
 
+        $mainProjectName = $_ENV['name'] ?? '';
+
         foreach ($projects as $name => $props) {
-            if ($_ENV['name'] ?? '' === $name) {
+            if ($mainProjectName === $name) {
                 // skip self
                 continue;
             }
