@@ -13,37 +13,37 @@ exports:
 
 projects:
   dev-tools:
-    version: 0.4.27
+    version: 0.4.28
   core:
-    version: 0.4.27
+    version: 0.4.28
   web:
-    version: 0.4.27
+    version: 0.4.28
   cli:
-    version: 0.4.27
+    version: 0.4.28
   examples:
-    version: 0.4.27
+    version: 0.4.28
   mysql:
-    version: 0.4.27
+    version: 0.4.28
   mysql-dbms:
-    version: 0.4.27
+    version: 0.4.28
   optional:
-    version: 0.4.27
+    version: 0.4.28
   queue:
-    version: 0.4.27
+    version: 0.4.28
   raspberrypi:
-    version: 0.4.27
+    version: 0.4.28
   starter:
-    version: 0.4.27
+    version: 0.4.28
   store:
-    version: 0.4.27
+    version: 0.4.28
   cui:
-    version: 0.4.27
+    version: 0.4.28
   spa:
-    version: 0.4.27
+    version: 0.4.28
   web-starter:
-    version: 0.4.27
+    version: 0.4.28
   svelte-starter:
-    version: 0.4.27
+    version: 0.4.28
     imports:
       - "bin"
       - ".github"
@@ -51,4 +51,4 @@ projects:
       - "psalm.xml"
       - "build.yml"
   server-linking:
-    version: 0.4.27
+    version: 0.4.28

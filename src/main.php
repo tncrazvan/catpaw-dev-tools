@@ -6,10 +6,15 @@ use CatPaw\Environment\Attributes\Environment;
 
 /**
  * 
- * @param  bool                                        $sync
- * @param  bool                                        $export
- * @param  bool                                        $deleteAllTags
- * @return Generator<int, Promise<void>, mixed, mixed>
+ * @param bool $sync
+ * @param bool $export
+ * @param bool $deleteAllTags
+ * @return Generator<
+ *  int, 
+ *  Promise<void>, 
+ *  mixed, 
+ *  mixed
+ * >
  */
 #[Environment('product.yml', 'product.yaml', 'resources/product.yml')]
 function main(
