@@ -4,7 +4,7 @@ projects:
   dev-tools:
     version: 0.4.23
   core:
-    version: 0.4.25
+    version: 0.4.26
   web:
     version: 0.4.23
   cli:
