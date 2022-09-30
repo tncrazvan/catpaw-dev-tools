@@ -51,15 +51,13 @@ function export():Promise {
         chdir(dirname(__FILE__));
         $root = realpath('../../');
 
-        foreach ($projects as $project => $options) {
-            if ("dev-tools" === $project) {
+        foreach ($projects as $name => $props) {
+            if ($_ENV['name'] ?? '' === $name) {
                 // skip self
                 continue;
             }
-            exportProjectItems($root, $project, match ($project) {
-                "svelte-starter" => ['bin','.github','.php-cs-fixer.php','psalm.xml','build.yml'],
-                default          => ['bin','.vscode','.github','.php-cs-fixer.php','psalm.xml','build.yml'],
-            });
+            $exports = $props['exports'] ?? $_ENV['exports'] ?? [];
+            exportProjectItems($root, $name, $exports);
         }
     });
 }

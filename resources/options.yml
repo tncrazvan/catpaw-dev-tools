@@ -1,3 +1,5 @@
+name: dev-tools
+
 projects:
   dev-tools:
     version: 0.4.23
@@ -31,5 +33,19 @@ projects:
     version: 0.4.23
   svelte-starter:
     version: 0.4.23
+    exports:
+      - "bin"
+      - ".github"
+      - ".php-cs-fixer.php"
+      - "psalm.xml"
+      - "build.yml"
   server-linking:
     version: 0.4.23
+
+exports:
+  - "bin"
+  - ".vscode"
+  - ".github"
+  - ".php-cs-fixer.php"
+  - "psalm.xml"
+  - "build.yml"
