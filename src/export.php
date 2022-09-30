@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * @psalm-type ProjectName = "dev-tools" | "core" | "cli" | "environment" | "examples" | "mysql" | "mysql-dbms" | "optional" | "queue" | "raspberrypi" | "starter" | "store" | "web" | "cui" | "spa" | "web-starter" | "svelte-starter"
@@ -7,7 +6,6 @@
 use function Amp\call;
 use function Amp\File\{createDirectoryRecursively, exists, isFile};
 use Amp\Promise;
-use CatPaw\Environment\Attributes\Environment;
 use function CatPaw\{copyDirectoryRecursively, copyFile, deleteDirectoryRecursively};
 
 /**
@@ -16,7 +14,7 @@ use function CatPaw\{copyDirectoryRecursively, copyFile, deleteDirectoryRecursiv
  * @param  array       $items
  * @return Promise
  */
-function export(string $root, mixed $project, array $items):Promise {
+function exportProjectItems(string $root, mixed $project, array $items):Promise {
     return call(function() use ($root, $project, $items) {
         foreach ($items as $item) {
             $source      = "$root/catpaw-dev-tools/$item";
@@ -43,25 +41,25 @@ function export(string $root, mixed $project, array $items):Promise {
 
 
 /**
- * @param  array<ProjectName,array{version:string,message:string}> $projects
- * @throws Error
- * @return void
+ * 
+ * @return Promise<void>
  */
-#[Environment('options.yml')]
-function main() {
-    /** @var array */
-    $projects = $_ENV['projects'] ?? [];
-    chdir(dirname(__FILE__));
-    $root = realpath('../../');
+function export():Promise {
+    return call(function() {
+        /** @var array */
+        $projects = $_ENV['projects'] ?? [];
+        chdir(dirname(__FILE__));
+        $root = realpath('../../');
 
-    foreach ($projects as $project => $options) {
-        if ("dev-tools" === $project) {
-            // skip self
-            continue;
+        foreach ($projects as $project => $options) {
+            if ("dev-tools" === $project) {
+                // skip self
+                continue;
+            }
+            exportProjectItems($root, $project, match ($project) {
+                "svelte-starter" => ['bin','.github','.php-cs-fixer.php','psalm.xml','build.yml'],
+                default          => ['bin','.vscode','.github','.php-cs-fixer.php','psalm.xml','build.yml'],
+            });
         }
-        export($root, $project, match ($project) {
-            "svelte-starter" => ['bin','.github','.php-cs-fixer.php','psalm.xml','build.yml'],
-            default          => ['bin','.vscode','.github','.php-cs-fixer.php','psalm.xml','build.yml'],
-        });
-    }
+    });
 }

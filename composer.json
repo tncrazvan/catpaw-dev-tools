@@ -12,6 +12,7 @@
         ],
         "action:test": [],
         "test": [],
+        "start": "XDEBUG_MODE=off php ./bin/start -e./src/main.php",
         "sync": "XDEBUG_MODE=off php ./bin/start -e./src/sync.php",
         "export": "XDEBUG_MODE=off php ./bin/start -e./src/export.php",
         "build": "XDEBUG_MODE=off php -dphar.readonly=0 ./bin/start -e./bin/build"
@@ -27,7 +28,12 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/lib/"
-        }
+        },
+        "files": [
+            "src/sync.php",
+            "src/export.php",
+            "src/deleteAllTags.php"
+        ]
     },
     "require": {
         "php": "^8.1",
