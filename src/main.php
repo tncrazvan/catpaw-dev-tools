@@ -11,7 +11,7 @@ use CatPaw\Environment\Attributes\Environment;
  * @param  bool                                        $deleteAllTags
  * @return Generator<int, Promise<void>, mixed, mixed>
  */
-#[Environment('options.yml', 'options.yaml', 'resources/options.yml')]
+#[Environment('product.yml', 'product.yaml', 'resources/product.yml')]
 function main(
     #[Option("--sync")] bool $sync,
     #[Option("--export")] bool $export,

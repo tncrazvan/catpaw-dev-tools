@@ -4,7 +4,6 @@ use Amp\Promise;
 use function CatPaw\execute;
 
 /**
- * 
  * @return Promise<void>
  */
 function deleteAllTags():Promise {

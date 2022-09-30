@@ -41,7 +41,6 @@ function exportProjectItems(string $root, string $prefix, string $master, mixed 
 
 
 /**
- * 
  * @return Promise<void>
  */
 function export():Promise {
