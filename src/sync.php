@@ -40,6 +40,8 @@ function sync():Promise {
             call(function() use ($version, $message, $cwd) {
                 echo yield execute("composer fix", $cwd);
                 echo yield execute("rm composer.lock", $cwd);
+                echo yield execute("git fetch", $cwd);
+                echo yield execute("git pull", $cwd);
                 echo yield execute("git add .", $cwd);
                 echo yield execute("git commit -m\"$message\"", $cwd);
                 echo yield execute("git push", $cwd);
