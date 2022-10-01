@@ -1,14 +1,14 @@
 The binary provides 3 options
 
-1. `--sync`<br/>
+# `--sync`<br/>
    Synchronize origin repository and local repository.
    It will always try to create a new tag with the given version and update all the catpaw dependencies using your `prefix`.<br/>
    This means all your libraries should use the same prefix, in this case it would be `catpaw`, which translates to `"catpaw/<project>": "<version>"` for composer.<br/>
    This will also run `composer fix`, so make sure this composer script exists.
-2.  `--export`<br/>
+#  `--export`<br/>
    Copy all `exports` (check the `product.yml` file) to all the other `projects`.<br/>
    Each project can overwrite the copied files using the `imports` property in `product.yml`.
-3. `--delete-all-tags`<br/>
+# `--delete-all-tags`<br/>
    Delete all repository local and remote tags, useful when tag naming becomes chaotic and needs a reset.
 
 You __must__ specify a relative configuration `./product.yml` file.<br/>
