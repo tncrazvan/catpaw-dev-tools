@@ -1,17 +1,17 @@
 The binary provides 3 options
 
-1. `--sync`
+1. `--sync`<br/>
    Synchronize origin repository and local repository.
-   It will always try to create a new tag with the given version and update all the catpaw dependencies using your `prefix`.
-   This means all your libraries should use the same prefix, in this case it would be `catpaw`, which translates to `"catpaw/<project>": "<version>"` for composer.
+   It will always try to create a new tag with the given version and update all the catpaw dependencies using your `prefix`.<br/>
+   This means all your libraries should use the same prefix, in this case it would be `catpaw`, which translates to `"catpaw/<project>": "<version>"` for composer.<br/>
    This will also run `composer fix`, so make sure this composer script exists.
-2.  `--export`
-   Copy all `exports` (check the `product.yml` file) to all the other `projects`.
+2.  `--export`<br/>
+   Copy all `exports` (check the `product.yml` file) to all the other `projects`.<br/>
    Each project can overwrite the copied files using the `imports` property in `product.yml`.
-3. `--delete-all-tags`
+3. `--delete-all-tags`<br/>
    Delete all repository local and remote tags, useful when tag naming becomes chaotic and needs a reset.
 
-You __must__ specify a relative configuration `./product.yml` file.
+You __must__ specify a relative configuration `./product.yml` file.<br/>
 An example of `./product.yml`:
 ```yaml
 
@@ -70,7 +70,7 @@ projects:
     version: 0.4.28
 ```
 
-This configuration defines a master project called `dev-tools` located in a directory called `catpaw-dev-tools`.
+This configuration defines a master project called `dev-tools` located in a directory called `catpaw-dev-tools`.<br/>
 The master project exports the following files to the other projects:
 
 ```yaml
@@ -86,11 +86,13 @@ exports:
 The `prefix` also applies to all the other projects, so this means that, for example, the `core` project is located in a directory called `catpaw-core`.
 
 ## Note
-As you can see the `svelte-starter` specifies a property `imports`.
-This  `imports` property overwrites the `export` property from the root of the configuration, making it possible to exclude or  inlcude certains fails into the  `svelte-start` project from the `dev-dools` master project.
+As you can see the `svelte-starter` specifies a property `imports`.<br/>
+This  `imports` property overwrites the `export` property from the root of the configuration, making it possible to exclude or  inlcude certains fails into the  `svelte-start` project from the `dev-dools` master project.<br/>
 In this case the outcome would be that `svelte-starter` will not import the `.vscode` directory.
 
 ## Usage examples
+
+A few examples on how to use this binary.
 
 ### Delete all local and remote tags
 ```bash
