@@ -11,6 +11,8 @@ The binary provides 3 options
 # `--delete-all-tags`<br/>
    Delete all repository local and remote tags, useful when tag naming becomes chaotic and needs a reset.
 
+---
+
 You __must__ specify a relative configuration `./product.yml` file.<br/>
 An example of `./product.yml`:
 ```yaml
