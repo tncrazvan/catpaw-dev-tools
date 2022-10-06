@@ -13,7 +13,7 @@ exports:
 
 projects:
   dev-tools:
-    version: 0.4.30
+    version: 0.4.31
   core:
     version: 0.4.30
   web:

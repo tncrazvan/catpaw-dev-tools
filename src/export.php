@@ -51,8 +51,7 @@ function export():Promise {
         $prefix = $_ENV['prefix'] ?? '';
         /** @var string */
         $master = $_ENV['master'] ?? '';
-        chdir(dirname(__FILE__));
-        $root = realpath('../../');
+        $root   = realpath('../');
 
 
         foreach ($projects as $name => $props) {
