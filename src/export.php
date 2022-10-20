@@ -14,11 +14,11 @@ use function CatPaw\{copyDirectoryRecursively, copyFile, deleteDirectoryRecursiv
  * @param  array       $items
  * @return Promise
  */
-function exportProjectItems(string $root, string $prefix, string $master, mixed $project, array $items):Promise {
-    return call(function() use ($root, $prefix, $master, $project, $items) {
+function exportProjectItems(string $root, string $master, mixed $project, array $items):Promise {
+    return call(function() use ($root, $master, $project, $items) {
         foreach ($items as $item) {
-            $source      = "$root/$prefix-$master/$item";
-            $destination = "$root/$prefix-$project/$item";
+            $source      = "$root/$master/$item";
+            $destination = "$root/$project/$item";
             if (!yield exists($source)) {
                 echo "Skipping source file \"$source\" because it doesn't exist.".PHP_EOL;
                 continue;
@@ -48,8 +48,6 @@ function export():Promise {
         /** @var array */
         $projects = $_ENV['projects'] ?? [];
         /** @var string */
-        $prefix = $_ENV['prefix'] ?? '';
-        /** @var string */
         $master = $_ENV['master'] ?? '';
         $root   = realpath('../');
 
@@ -63,7 +61,7 @@ function export():Promise {
             if ('none' === $exports) {
                 $exports = [];
             }
-            exportProjectItems($root, $prefix, $master, $name, $exports);
+            exportProjectItems($root, $master, $name, $exports);
         }
     });
 }

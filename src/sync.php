@@ -2,6 +2,7 @@
 use function Amp\call;
 use function Amp\File\{read, write};
 use Amp\Promise;
+
 use function CatPaw\execute;
 
 /**
@@ -11,29 +12,40 @@ function sync():Promise {
     return call(function() {
         /** @var array */
         $projects = $_ENV['projects'] ?? [];
-        /** @var string */
-        $prefix = $_ENV['prefix'] ?? '';
         chdir(dirname(__FILE__));
         $root = realpath('../../');
 
-        foreach ($projects as $name => $props) {
-            $library       = $props['library'] ?? $name;
-            $version       = preg_replace('/"/', '\\"', $props['version']);
-            $versionPieces = explode('.', $version);
-            $mversion      = join('.', [$versionPieces[0] ?? '0',$versionPieces[1] ?? '0']);
-            $message       = preg_replace('/"/', '\\"', $props['message'] ?? "Version $version");
-            echo "Tagging project $prefix-$name".PHP_EOL;
-            $cwd = "$root/$prefix-$name";
+        $libraries = [];
+        $versions  = [];
+        
+        foreach ($projects as $projectName => $projectProperties) {
+            $library            = $projectProperties['library'] ?? $projectName;
+            $versionString      = preg_replace('/"/', '\\"', $projectProperties['version']);
+            $versionPieces      = explode('.', $versionString);
+            $version            = join('.', [$versionPieces[0] ?? '0',$versionPieces[1] ?? '0']);
+            $message            = preg_replace('/"/', '\\"', $projectProperties['message'] ?? "Version $versionString");
+            $libraries[]        = $library;
+            $versions[$library] = $version;
+        }
 
+
+
+        foreach ($projects as $projectName => $projectProperties) {
+            echo "Tagging project $projectName".PHP_EOL;
+
+            $library       = $projectProperties['library'] ?? $projectName;
+            $versionString = preg_replace('/"/', '\\"', $projectProperties['version']);
+            $versionPieces = explode('.', $versionString);
+            $version       = join('.', [$versionPieces[0] ?? '0',$versionPieces[1] ?? '0']);
+            $message       = preg_replace('/"/', '\\"', $projectProperties['message'] ?? "Version $versionString");
+
+            $cwd             = "$root/$projectName";
             $composeFileName = "$cwd/composer.json";
             $composer        = json_decode(yield read($composeFileName), true);
 
-            foreach ($composer['require'] as $rname => &$rversion) {
-                // if (str_starts_with($rname, "$prefix/")) {
-                //     $rversion = "^$mversion";
-                // }
-                if ($rname === $library) {
-                    $rversion = "^$mversion";
+            foreach ($composer['require'] as $composerLibrary => &$composerVersion) {
+                if (in_array($composerLibrary, $libraries)) {
+                    $composerVersion = '^'.$versions[$composerLibrary];
                 }
             }
 
@@ -41,7 +53,7 @@ function sync():Promise {
 
             yield write($composeFileName, str_replace('\/', '/', yield read($composeFileName)));
 
-            call(function() use ($version, $message, $cwd) {
+            yield call(function() use ($cwd, $message, $versionString) {
                 echo yield execute("composer fix", $cwd);
                 echo yield execute("rm composer.lock", $cwd);
                 echo yield execute("git fetch", $cwd);
@@ -49,19 +61,19 @@ function sync():Promise {
                 echo yield execute("git add .", $cwd);
                 echo yield execute("git commit -m\"$message\"", $cwd);
                 echo yield execute("git push", $cwd);
-                echo yield execute("git tag -a \"$version\" -m\"$message\"", $cwd);
+                echo yield execute("git tag -a \"$versionString\" -m\"$message\"", $cwd);
                 echo yield execute("git push --tags", $cwd);
             });
         }
 
 
-        foreach ($projects as $name => $props) {
-            $version = preg_replace('/"/', '\\"', $props['version']);
-            $message = preg_replace('/"/', '\\"', $props['message'] ?? "Version $version");
+        foreach ($projects as $projectName => $projectProperties) {
+            $versionString = preg_replace('/"/', '\\"', $projectProperties['version']);
+            $message       = preg_replace('/"/', '\\"', $projectProperties['message'] ?? "Version $versionString");
 
-            echo "Updating project $prefix-$name".PHP_EOL;
+            echo "Updating project $projectName".PHP_EOL;
 
-            $cwd = "$root/$prefix-$name";
+            $cwd = "$root/$projectName";
 
 
             call(function() use ($cwd) {
