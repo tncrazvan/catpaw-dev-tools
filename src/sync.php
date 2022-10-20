@@ -6,6 +6,7 @@ use Amp\Promise;
 use function Amp\Promise\all;
 
 use function CatPaw\execute;
+use function CatPaw\isPhar;
 
 /**
  * @return Promise<void>
@@ -14,8 +15,12 @@ function sync():Promise {
     return call(function() {
         /** @var array */
         $projects = $_ENV['projects'] ?? [];
-        chdir(dirname(__FILE__));
-        $root = realpath('../../');
+        if (isPhar()) {
+            $root = realpath('../');
+        } else {
+            chdir(dirname(__FILE__));
+            $root = realpath('../../');
+        }
 
         $libraries = [];
         $versions  = [];
