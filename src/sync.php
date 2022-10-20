@@ -3,6 +3,8 @@ use function Amp\call;
 use function Amp\File\{read, write};
 use Amp\Promise;
 
+use function Amp\Promise\all;
+
 use function CatPaw\execute;
 
 /**
@@ -17,6 +19,7 @@ function sync():Promise {
 
         $libraries = [];
         $versions  = [];
+        $promises  = [];
         
         foreach ($projects as $projectName => $projectProperties) {
             $library            = $projectProperties['library'] ?? $projectName;
@@ -27,8 +30,6 @@ function sync():Promise {
             $libraries[]        = $library;
             $versions[$library] = $version;
         }
-
-
 
         foreach ($projects as $projectName => $projectProperties) {
             echo "Tagging project $projectName".PHP_EOL;
@@ -53,7 +54,7 @@ function sync():Promise {
 
             yield write($composeFileName, str_replace('\/', '/', yield read($composeFileName)));
 
-            yield call(function() use ($cwd, $message, $versionString) {
+            $promises[] = call(function() use ($cwd, $message, $versionString) {
                 echo yield execute("composer fix", $cwd);
                 echo yield execute("rm composer.lock", $cwd);
                 echo yield execute("git fetch", $cwd);
@@ -66,6 +67,7 @@ function sync():Promise {
             });
         }
 
+        yield all($promises);
 
         foreach ($projects as $projectName => $projectProperties) {
             $versionString = preg_replace('/"/', '\\"', $projectProperties['version']);
