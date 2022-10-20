@@ -1,8 +1,5 @@
 
 master: dev-tools
-
-prefix: catpaw
-
 exports:
   - "bin"
   - ".vscode"
@@ -11,38 +8,55 @@ exports:
   - "psalm.xml"
   - "build.yml"
 
+prefix: catpaw
 projects:
   dev-tools:
+    library: catpaw/dev-tools
     version: 0.4.31
   core:
+    library: catpaw/core
     version: 0.4.30
   web:
+    library: catpaw/web
     version: 0.4.30
   cli:
+    library: catpaw/cli
     version: 0.4.30
   examples:
+    library: catpaw/examples
     version: 0.4.30
   mysql:
+    library: catpaw/mysql
     version: 0.4.30
   mysql-dbms:
+    library: catpaw/mysql-dbms
     version: 0.4.30
   optional:
+    library: catpaw/optional
     version: 0.4.30
   queue:
+    library: catpaw/queue
     version: 0.4.30
   raspberrypi:
+    library: catpaw/raspberrypi
     version: 0.4.30
   starter:
+    library: catpaw/starter
     version: 0.4.30
   store:
+    library: catpaw/store
     version: 0.4.30
   cui:
+    library: catpaw/cui
     version: 0.4.30
   spa:
+    library: catpaw/spa
     version: 0.4.30
   web-starter:
+    library: catpaw/web-starter
     version: 0.4.30
   svelte-starter:
+    library: catpaw/svelte-starter
     version: 0.4.30
     imports:
       - "bin"
@@ -51,4 +65,5 @@ projects:
       - "psalm.xml"
       - "build.yml"
   server-linking:
+    library: catpaw/server-linking
     version: 0.4.30

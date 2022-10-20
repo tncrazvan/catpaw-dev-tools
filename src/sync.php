@@ -17,7 +17,7 @@ function sync():Promise {
         $root = realpath('../../');
 
         foreach ($projects as $name => $props) {
-            $library       = $props['name'] ?? $name;
+            $library       = $props['library'] ?? $name;
             $version       = preg_replace('/"/', '\\"', $props['version']);
             $versionPieces = explode('.', $version);
             $mversion      = join('.', [$versionPieces[0] ?? '0',$versionPieces[1] ?? '0']);
