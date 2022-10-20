@@ -1,3 +1,6 @@
+
+master: catpaw-dev-tools
+
 exports:
   - "bin"
   - ".vscode"
@@ -5,8 +8,6 @@ exports:
   - ".php-cs-fixer.php"
   - "psalm.xml"
   - "build.yml"
-
-master: catpaw-dev-tools
 
 projects:
   catpaw-dev-tools:

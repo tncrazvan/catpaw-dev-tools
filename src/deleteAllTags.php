@@ -11,15 +11,12 @@ function deleteAllTags():Promise {
         /** @var array */
         $projects = $_ENV['projects'] ?? [];
         /** @var string */
-        $prefix = $_ENV['prefix'] ?? '';
-        /** @var string */
         $master = $_ENV['master'] ?? '';
 
-        chdir(dirname(__FILE__));
-        $root = realpath('../../');
+        $root = realpath('../');
 
-        $cwd = "$root/$prefix-$master";
-        echo "Deleting tags of project $prefix-$master".PHP_EOL;
+        $cwd = "$root/$master";
+        echo "Deleting tags of project $master".PHP_EOL;
 
         #Delete local tags.
         echo yield execute("git tag -l | xargs git tag -d", $cwd);
@@ -30,9 +27,9 @@ function deleteAllTags():Promise {
         #Delete local tags.
         echo yield execute("git tag -l | xargs git tag -d", $cwd);
 
-        foreach ($projects as $name => $props) {
-            echo "Tagging project $prefix-$name".PHP_EOL;
-            $cwd = "$root/$prefix-$name";
+        foreach ($projects as $projectName => $_) {
+            echo "Tagging project $projectName".PHP_EOL;
+            $cwd = "$root/$projectName";
             
             // work in parallel on each project to speed things up
             call(function() use ($cwd) {
