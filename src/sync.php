@@ -17,6 +17,7 @@ function sync():Promise {
         $root = realpath('../../');
 
         foreach ($projects as $name => $props) {
+            $library       = $props['name'] ?? $name;
             $version       = preg_replace('/"/', '\\"', $props['version']);
             $versionPieces = explode('.', $version);
             $mversion      = join('.', [$versionPieces[0] ?? '0',$versionPieces[1] ?? '0']);
@@ -28,7 +29,10 @@ function sync():Promise {
             $composer        = json_decode(yield read($composeFileName), true);
 
             foreach ($composer['require'] as $rname => &$rversion) {
-                if (str_starts_with($rname, "$prefix/")) {
+                // if (str_starts_with($rname, "$prefix/")) {
+                //     $rversion = "^$mversion";
+                // }
+                if ($rname === $library) {
                     $rversion = "^$mversion";
                 }
             }
