@@ -12,7 +12,7 @@ exports:
 projects:
   catpaw-dev-tools:
     library: catpaw/dev-tools
-    version: 0.4.35
+    version: 0.4.36
   catpaw-core:
     library: catpaw/core
     version: 0.4.30

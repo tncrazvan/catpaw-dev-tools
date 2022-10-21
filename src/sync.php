@@ -40,9 +40,13 @@ function sync():Promise {
 
             $cwd             = "$root/$projectName";
             $composeFileName = "$cwd/composer.json";
-            $composer        = json_decode(yield read($composeFileName), true);
+            $composer        = json_decode(yield read($composeFileName));
 
-            foreach ($composer['require'] as $composerLibrary => &$composerVersion) {
+            if (!isset($composer->require)) {
+                $composer->require = new \stdClass;
+            }
+
+            foreach ($composer->require as $composerLibrary => &$composerVersion) {
                 if (in_array($composerLibrary, $libraries)) {
                     $composerVersion = '^'.$versions[$composerLibrary];
                 }
