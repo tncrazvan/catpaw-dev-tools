@@ -42,19 +42,18 @@ function sync():Promise {
             $composeFileName = "$cwd/composer.json";
             $composer        = json_decode(yield read($composeFileName));
 
-            if (!isset($composer->require)) {
-                $composer->require = new \stdClass;
-            }
-
-            foreach ($composer->require as $composerLibrary => &$composerVersion) {
-                if (in_array($composerLibrary, $libraries)) {
-                    $composerVersion = '^'.$versions[$composerLibrary];
+            if (isset($composer->require)) {
+                foreach ($composer->require as $composerLibrary => &$composerVersion) {
+                    if (in_array($composerLibrary, $libraries)) {
+                        $composerVersion = '^'.$versions[$composerLibrary];
+                    }
                 }
+    
+                yield write($composeFileName, json_encode($composer, JSON_PRETTY_PRINT));
+    
+                yield write($composeFileName, str_replace('\/', '/', yield read($composeFileName)));
             }
 
-            yield write($composeFileName, json_encode($composer, JSON_PRETTY_PRINT));
-
-            yield write($composeFileName, str_replace('\/', '/', yield read($composeFileName)));
 
             $promises[] = call(function() use ($cwd, $message, $versionString) {
                 echo yield execute("composer fix", $cwd);
