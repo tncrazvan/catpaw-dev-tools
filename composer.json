@@ -32,6 +32,7 @@
         "files": [
             "src/sync.php",
             "src/export.php",
+            "src/build.php",
             "src/deleteAllTags.php"
         ]
     },

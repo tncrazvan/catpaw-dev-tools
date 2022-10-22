@@ -1,5 +1,4 @@
-
-master: catpaw-dev-tools
+master: ../catpaw-dev-tools
 
 exports:
   - "bin"
@@ -10,52 +9,52 @@ exports:
   - "build.yml"
 
 projects:
-  catpaw-dev-tools:
-    library: catpaw/dev-tools
+  ../catpaw-dev-tools:
+    library: catpaw-dev-tools
     version: 0.4.37
-  catpaw-core:
+  ../catpaw-core:
     library: catpaw/core
-    version: 0.4.30
-  catpaw-web:
+    version: 0.4.31
+  ../catpaw-web:
     library: catpaw/web
     version: 0.4.30
-  catpaw-cli:
+  ../catpaw-cli:
     library: catpaw/cli
     version: 0.4.30
-  catpaw-examples:
+  ../catpaw-examples:
     library: catpaw/examples
     version: 0.4.30
-  catpaw-mysql:
+  ../catpaw-mysql:
     library: catpaw/mysql
     version: 0.4.30
-  catpaw-mysql-dbms:
+  ../catpaw-mysql-dbms:
     library: catpaw/mysql-dbms
     version: 0.4.30
-  catpaw-optional:
+  ../catpaw-optional:
     library: catpaw/optional
     version: 0.4.30
-  catpaw-queue:
+  ../catpaw-queue:
     library: catpaw/queue
     version: 0.4.30
-  catpaw-raspberrypi:
+  ../catpaw-raspberrypi:
     library: catpaw/raspberrypi
     version: 0.4.30
-  catpaw-starter:
+  ../catpaw-starter:
     library: catpaw/starter
     version: 0.4.30
-  catpaw-store:
+  ../catpaw-store:
     library: catpaw/store
     version: 0.4.30
-  catpaw-cui:
+  ../catpaw-cui:
     library: catpaw/cui
     version: 0.4.30
-  catpaw-spa:
+  ../catpaw-spa:
     library: catpaw/spa
     version: 0.4.30
-  catpaw-web-starter:
+  ../catpaw-web-starter:
     library: catpaw/web-starter
     version: 0.4.30
-  catpaw-svelte-starter:
+  ../catpaw-svelte-starter:
     library: catpaw/svelte-starter
     version: 0.4.30
     imports:
@@ -64,6 +63,6 @@ projects:
       - ".php-cs-fixer.php"
       - "psalm.xml"
       - "build.yml"
-  catpaw-server-linking:
+  ../catpaw-server-linking:
     library: catpaw/server-linking
     version: 0.4.30

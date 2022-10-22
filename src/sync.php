@@ -14,7 +14,7 @@ function sync():Promise {
     return call(function() {
         /** @var array */
         $projects  = $_ENV['projects'] ?? [];
-        $root      = realpath('../');
+        $root      = realpath('.');
         $libraries = [];
         $versions  = [];
         $promises  = [];

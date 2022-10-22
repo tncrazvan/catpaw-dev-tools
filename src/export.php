@@ -49,7 +49,7 @@ function export():Promise {
         $projects = $_ENV['projects'] ?? [];
         /** @var string */
         $master = $_ENV['master'] ?? '';
-        $root   = realpath('../');
+        $root   = realpath('.');
 
 
         foreach ($projects as $name => $props) {
