@@ -6,6 +6,7 @@
 *.log
 *.exe
 *.pem
+*.phar
 /composer.phar
 /.history/
 /.idea/
