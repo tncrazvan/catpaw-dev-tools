@@ -1,6 +1,10 @@
 <?php
 
+use function Amp\File\deleteFile;
+use function Amp\File\exists;
+use function Amp\File\write;
 use Amp\Promise;
+
 use CatPaw\Attributes\Option;
 
 use CatPaw\Environment\Attributes\Environment;
@@ -21,14 +25,31 @@ use CatPaw\Environment\Attributes\Environment;
 function main(
     #[Option("--sync")] bool $sync,
     #[Option("--export")] bool $export,
-    #[Option("--build")] ?string $build,
+    #[Option("--build-config")] bool $buildConfig,
+    #[Option("--build")] false|string $build,
     #[Option("--delete-all-tags")] bool $deleteAllTags,
 ) {
+    if ($buildConfig) {
+        echo 'Trying to generate build.yml file...'.PHP_EOL;
+        if (!yield exists('build.yml')) {
+            deleteFile('build.yml');
+
+            yield write('build.yml', <<<YAML
+                name: app
+                entry: ./src/main.php
+                libraries: ./src/lib
+                match: /^\.\/(src|vendor|resources|dist|bin)\/.*/
+                YAML);
+        } else {
+            echo 'A build.yml file already exists - will not overwrite.'.PHP_EOL;
+        }
+    }
+
     return match (true) {
-        $sync                     => yield sync(),
-        $export                   => yield export(),
-        $build && null !== $build => yield build($build ?? 'build.yml,build.yaml'),
-        $deleteAllTags            => yield deleteAllTags(),
-        default                   => 0
+        $sync            => yield sync(),
+        $export          => yield export(),
+        false !== $build => yield build($build?$build:'build.yml,build.yaml'),
+        $deleteAllTags   => yield deleteAllTags(),
+        default          => 0
     };
 }
