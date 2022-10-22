@@ -16,7 +16,7 @@
             "args": [
                 "-l./src/lib/",
                 "-e./src/main.php",
-                "--build \"test.php\""
+                "--build \"./build.yml\""
             ],
             "runtimeArgs": [
                 "-dxdebug.start_with_request=yes",

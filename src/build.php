@@ -4,20 +4,39 @@ use function Amp\call;
 
 use function Amp\File\deleteFile;
 use function Amp\File\exists;
+use function Amp\File\read;
+
 use Amp\Promise;
 
 /**
  * 
- * @param  array   $config
+ * @param string $build name of the build yaml file.
+ * 
+ * Multiple names separated by "," are allowed, only the first valid name will be used.
  * @return Promise
  */
-function build(array $config):Promise {
-    return call(function() use ($config) {
+function build(
+    string $build
+):Promise {
+    return call(function() use ($build) {
+        $config = false;
+        foreach (explode(',', $build) as $file) {
+            if ($parsed = yaml_parse(yield read($file))) {
+                $config = $parsed;
+                break;
+            }
+        }
+        
+        if (!$config) {
+            die('Invalid yaml build file.'.PHP_EOL);
+        }
+
         /**
          * @var string $name
          * @var string $entry
          * @var string $libraries
          * @var string $match
+         * @var array  $config
          */
 
         $name      = $config['name']      ?? '';
@@ -51,7 +70,7 @@ function build(array $config):Promise {
             }
         }
 
-        $app = 'dist/app.phar';
+        $app = str_ends_with(strtolower($name), '.phar')?$name:"$name.phar";
 
         try {
             if (yield exists($app)) {
