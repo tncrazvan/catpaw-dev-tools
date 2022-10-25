@@ -49,9 +49,9 @@ function sync():Promise {
                     }
                 }
     
-                yield write($composeFileName, json_encode($composer, JSON_PRETTY_PRINT));
+                yield write($composeFileName, trim(json_encode($composer, JSON_PRETTY_PRINT)));
     
-                yield write($composeFileName, str_replace('\/', '/', yield read($composeFileName)));
+                yield write($composeFileName, trim(str_replace('\/', '/', yield read($composeFileName))));
             }
 
 
