@@ -55,7 +55,10 @@ function sync():Promise {
             }
 
 
-            $promises[] = call(function() use ($cwd, $message, $versionString) {
+            /**
+             * @psalm-suppress MissingClosureReturnType
+             */
+            $promises[] = function() use ($cwd, $message, $versionString) {
                 echo yield execute("composer fix", $cwd);
                 echo yield execute("rm composer.lock", $cwd);
                 echo yield execute("git fetch", $cwd);
@@ -65,10 +68,16 @@ function sync():Promise {
                 echo yield execute("git push", $cwd);
                 echo yield execute("git tag -a \"$versionString\" -m\"$message\"", $cwd);
                 echo yield execute("git push --tags", $cwd);
-            });
+            };
         }
 
-        yield all($promises);
+        $joins = [];
+
+        foreach ($promises as $promise) {
+            $joins[] = call($promise);
+        }
+
+        yield all($joins);
 
         foreach ($projects as $projectName => $projectProperties) {
             $versionString = preg_replace('/"/', '\\"', $projectProperties['version']);
