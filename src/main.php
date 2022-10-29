@@ -1,5 +1,4 @@
 <?php
-
 use function Amp\File\deleteFile;
 use function Amp\File\exists;
 use function Amp\File\write;
@@ -32,7 +31,7 @@ function main(
     if ($buildConfig) {
         echo 'Trying to generate build.yml file...'.PHP_EOL;
         if (!yield exists('build.yml')) {
-            deleteFile('build.yml');
+            yield deleteFile('build.yml');
 
             yield write('build.yml', <<<YAML
                 name: app
@@ -45,11 +44,19 @@ function main(
         }
     }
 
-    return match (true) {
-        $sync            => yield sync(),
-        $export          => yield export(),
-        false !== $build => yield build($build?$build:'build.yml,build.yaml'),
-        $deleteAllTags   => yield deleteAllTags(),
-        default          => 0
-    };
+    if (false !== $build) {
+        yield build($build?$build:'build.yml,build.yaml');
+    }
+
+    if ($export) {
+        yield export();
+    }
+
+    if ($deleteAllTags) {
+        yield deleteAllTags();
+    }
+
+    if ($sync) {
+        yield sync();
+    }
 }
