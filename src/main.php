@@ -1,5 +1,4 @@
 <?php
-use function Amp\File\deleteFile;
 use function Amp\File\exists;
 use function Amp\File\write;
 use Amp\Promise;
@@ -31,8 +30,6 @@ function main(
     if ($buildConfig) {
         echo 'Trying to generate build.yml file...'.PHP_EOL;
         if (!yield exists('build.yml')) {
-            yield deleteFile('build.yml');
-
             yield write('build.yml', <<<YAML
                 name: app
                 entry: ./src/main.php
