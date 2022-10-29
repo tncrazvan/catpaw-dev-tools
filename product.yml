@@ -56,7 +56,7 @@ projects:
     version: 0.4.30
   ../catpaw-svelte-starter:
     library: catpaw/svelte-starter
-    version: 0.4.30
+    version: 0.4.31
     imports:
       - "bin"
       - ".github"
