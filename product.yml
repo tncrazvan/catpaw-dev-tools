@@ -11,7 +11,7 @@ exports:
 projects:
   .:
     library: catpaw-dev-tools
-    version: 0.4.44
+    version: 0.4.45
   ../catpaw-core:
     library: catpaw/core
     version: 0.4.33
@@ -63,6 +63,3 @@ projects:
       - ".php-cs-fixer.php"
       - "psalm.xml"
       - "build.yml"
-  ../catpaw-server-linking:
-    library: catpaw/server-linking
-    version: 0.4.30
