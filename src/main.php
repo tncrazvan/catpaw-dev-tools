@@ -26,7 +26,12 @@ function main(
     #[Option("--build-config")] bool $buildConfig,
     #[Option("--build")] false|string $build,
     #[Option("--delete-all-tags")] bool $deleteAllTags,
+    #[Option("--execute-everywhere")] string $executeEverywhere,
 ) {
+    if ($executeEverywhere) {
+        yield executeEverywhere($executeEverywhere);
+    }
+
     if ($buildConfig) {
         echo 'Trying to generate build.yml file...'.PHP_EOL;
         if (!yield exists('build.yml')) {

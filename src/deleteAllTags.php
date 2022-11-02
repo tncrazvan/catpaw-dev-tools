@@ -13,9 +13,7 @@ function deleteAllTags():Promise {
         /** @var string */
         $master = $_ENV['master'] ?? '';
 
-        $root = realpath('../');
-
-        $cwd = "$root/$master";
+        $cwd = "$master";
         echo "Deleting tags of project $master".PHP_EOL;
 
         #Delete local tags.
@@ -29,7 +27,7 @@ function deleteAllTags():Promise {
 
         foreach ($projects as $projectName => $_) {
             echo "Tagging project $projectName".PHP_EOL;
-            $cwd = "$root/$projectName";
+            $cwd = "$projectName";
             
             // work in parallel on each project to speed things up
             call(function() use ($cwd) {

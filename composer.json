@@ -15,6 +15,7 @@
         "start": "XDEBUG_MODE=off php ./bin/start -e./src/main.php",
         "sync": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --sync",
         "export": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --export",
+        "execute": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --execute",
         "build": "XDEBUG_MODE=off php -dphar.readonly=0 ./bin/start -e./bin/build"
     },
     "authors": [

@@ -7,6 +7,7 @@ exports:
   - ".php-cs-fixer.php"
   - "psalm.xml"
   - "build.yml"
+  - "LICENSE"
 
 projects:
   .:
@@ -14,7 +15,7 @@ projects:
     version: 0.4.45
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.33
+    version: 0.4.34
   ../catpaw-web:
     library: catpaw/web
     version: 0.4.31
