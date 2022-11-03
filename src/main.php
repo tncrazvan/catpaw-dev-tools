@@ -17,7 +17,7 @@ use CatPaw\Environment\Attributes\Environment;
  *  mixed
  * >
  */
-#[Environment('product.yml', 'product.yaml', 'resources/product.yml')]
+#[Environment('product.yml', 'product.yaml', 'resources/product.yml', 'resources/product.yaml')]
 function main(
     #[Option("--sync")] bool $sync,
     #[Option("--export")] bool $export,
