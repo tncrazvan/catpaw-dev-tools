@@ -17,7 +17,7 @@
                 "-l./src/lib/",
                 "-e./src/main.php",
                 "--sql-transform",
-                "--sql-transform-files\"test.sql\"",
+                "--sql-transform-files\"resources/routes\"",
                 "--sql-transform-generator\"generator.php\"",
             ],
             "runtimeArgs": [
