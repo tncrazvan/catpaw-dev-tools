@@ -41,9 +41,9 @@ function SQLTransform(string $SQLTransformGenerator, array $fileNames):Promise {
                     && ($length = count($groups) >= 4)
                 ) {
                     [$_,$type,$extern,$intern] = $groups;
-                    $type                      = trim(strtolower($type));
-                    $extern                    = trim(strtolower($extern));
-                    $intern                    = trim(strtolower($intern));
+                    $type                      = trim($type);
+                    $extern                    = trim($extern);
+                    $intern                    = trim($intern);
                     $inject[]                  = "\"$extern\" => \$$extern";
                     if ('param' === $type) {
                         $params[] = <<<PHP

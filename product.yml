@@ -12,13 +12,13 @@ exports:
 projects:
   .:
     library: catpaw/dev-tools
-    version: 0.4.58
+    version: 0.4.59
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.58
+    version: 0.4.59
   ../catpaw-web:
     library: catpaw/web
-    version: 0.4.55
+    version: 0.4.56
   ../catpaw-cli:
     library: catpaw/cli
     version: 0.4.54
