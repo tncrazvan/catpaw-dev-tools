@@ -2,9 +2,7 @@
 use function Amp\File\exists;
 use function Amp\File\write;
 use Amp\Promise;
-
 use CatPaw\Attributes\Option;
-
 use CatPaw\Environment\Attributes\Environment;
 
 /**
@@ -44,7 +42,7 @@ function main(
                 name: app
                 entry: ./src/main.php
                 libraries: ./src/lib
-                match: /^\.\/(src|vendor|resources|dist|bin)\/.*/
+                match: /^\.\/(\.build-cache|src|vendor|resources|bin)\/.*/
                 YAML);
         } else {
             echo 'A build.yml file already exists - will not overwrite.'.PHP_EOL;
@@ -52,6 +50,9 @@ function main(
     }
 
     if (false !== $build) {
+        if (ini_get('phar.readonly')) {
+            die('Cannot build using readonly phar, please disable the phar.readonly flag by running the builder with "php -dphar.readonly=0"'.PHP_EOL);
+        }
         yield build($build?$build:'build.yml,build.yaml');
     }
 
