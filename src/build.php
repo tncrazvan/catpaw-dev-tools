@@ -76,7 +76,7 @@ function build(
         }
     
         $app   = "$name";
-        $start = '.dist/start.php';
+        $start = '.build-cache/start.php';
     
         $dirnameStart = dirname($start);
         try {
