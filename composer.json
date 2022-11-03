@@ -1,8 +1,8 @@
 {
-    "name": "catpaw/starter",
+    "name": "catpaw/dev-tools",
     "type": "project",
     "description": "A php CatPaw starter template",
-    "homepage": "https://github.com/tncrazvan/catpaw-starter",
+    "homepage": "https://github.com/tncrazvan/catpaw-dev-tools",
     "license": "MIT",
     "scripts": {
         "load": "XDEBUG_MODE=off composer dump-autoload -o",
