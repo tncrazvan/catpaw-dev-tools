@@ -15,8 +15,8 @@
         "start": "XDEBUG_MODE=off php ./bin/start -e./src/main.php",
         "sync": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --sync",
         "export": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --export",
-        "execute": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --execute-everywhere 'ls'",
-        "build": "XDEBUG_MODE=off php -dphar.readonly=0 ./bin/start -e./bin/build"
+        "execute": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --execute-everywhere-parallel",
+        "build": "XDEBUG_MODE=off php -dphar.readonly=0 ./bin/start -e./src/main.php --build"
     },
     "authors": [
         {
@@ -35,7 +35,8 @@
             "src/export.php",
             "src/build.php",
             "src/deleteAllTags.php",
-            "src/executeEverywhere.php"
+            "src/executeEverywhere.php",
+            "src/executeEverywhereParallel.php"
         ]
     },
     "require": {
@@ -58,7 +59,8 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpunit/phpunit": "^9",
-        "vimeo/psalm": "^4.23"
+        "vimeo/psalm": "^4.23",
+        "overtrue/phplint": "^5.3"
     },
     "config": {
         "preferred-install": "dist",

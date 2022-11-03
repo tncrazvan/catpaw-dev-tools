@@ -27,9 +27,14 @@ function main(
     #[Option("--build")] false|string $build,
     #[Option("--delete-all-tags")] bool $deleteAllTags,
     #[Option("--execute-everywhere")] string $executeEverywhere,
+    #[Option("--execute-everywhere-parallel")] string $executeEverywhereParallel,
 ) {
     if ($executeEverywhere) {
         yield executeEverywhere($executeEverywhere);
+    }
+
+    if ($executeEverywhereParallel) {
+        yield executeEverywhereParallel($executeEverywhereParallel);
     }
 
     if ($buildConfig) {
