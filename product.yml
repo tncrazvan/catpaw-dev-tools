@@ -41,9 +41,6 @@ projects:
   ../catpaw-raspberrypi:
     library: catpaw/raspberrypi
     version: 0.4.48
-  ../catpaw-starter:
-    library: catpaw/starter
-    version: 0.4.48
   ../catpaw-store:
     library: catpaw/store
     version: 0.4.48
@@ -52,6 +49,9 @@ projects:
     version: 0.4.48
   ../catpaw-spa:
     library: catpaw/spa
+    version: 0.4.48
+  ../catpaw-starter:
+    library: catpaw/starter
     version: 0.4.48
   ../catpaw-web-starter:
     library: catpaw/web-starter
