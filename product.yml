@@ -18,7 +18,7 @@ projects:
     version: 0.4.58
   ../catpaw-web:
     library: catpaw/web
-    version: 0.4.54
+    version: 0.4.55
   ../catpaw-cli:
     library: catpaw/cli
     version: 0.4.54
