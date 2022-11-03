@@ -8,6 +8,7 @@ exports:
   - "psalm.xml"
   - "build.yml"
   - "LICENSE"
+  - "product.phar"
 
 projects:
   .:
@@ -15,7 +16,7 @@ projects:
     version: 0.4.47
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.37
+    version: 0.4.38
   ../catpaw-web:
     library: catpaw/web
     version: 0.4.31
