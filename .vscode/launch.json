@@ -16,7 +16,8 @@
             "args": [
                 "-l./src/lib/",
                 "-e./src/main.php",
-                "--execute-everywhere ls"
+                "--execute-everywhere",
+                "ls"
             ],
             "runtimeArgs": [
                 "-dxdebug.start_with_request=yes",

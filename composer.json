@@ -15,7 +15,7 @@
         "start": "XDEBUG_MODE=off php ./bin/start -e./src/main.php",
         "sync": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --sync",
         "export": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --export",
-        "execute": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --execute",
+        "execute": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --execute-everywhere 'ls'",
         "build": "XDEBUG_MODE=off php -dphar.readonly=0 ./bin/start -e./bin/build"
     },
     "authors": [
@@ -34,7 +34,8 @@
             "src/sync.php",
             "src/export.php",
             "src/build.php",
-            "src/deleteAllTags.php"
+            "src/deleteAllTags.php",
+            "src/executeEverywhere.php"
         ]
     },
     "require": {

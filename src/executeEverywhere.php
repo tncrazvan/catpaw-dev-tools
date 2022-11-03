@@ -18,12 +18,14 @@ function executeEverywhere(string $command):Promise {
         $cwd = "$master";
         echo "Executing \"$command\" in $master (master)".PHP_EOL;
 
-        echo yield execute($command, $cwd);
+        $output = yield execute($command, $cwd);
+        echo $output.PHP_EOL;
 
         foreach ($projects as $projectName => $_) {
             $cwd = "$projectName";
             echo "Executing \"$command\" in $projectName".PHP_EOL;
-            echo yield execute($command, $cwd);
+            $output = yield execute($command, $cwd);
+            echo $output.PHP_EOL;
         }
     });
 }
