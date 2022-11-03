@@ -16,16 +16,16 @@ function executeEverywhereParallel(string $command):Promise {
         $master = $_ENV['master'] ?? '';
 
         $cwd = "$master";
-        echo "Executing \"$command\" in $master (master)".PHP_EOL;
 
         $output = yield execute($command, $cwd);
+        echo "Executing \"$command\" in $master (master)".PHP_EOL;
         echo $output.PHP_EOL;
 
         foreach ($projects as $projectName => $_) {
             call(function() use ($projectName, $command) {
-                $cwd = "$projectName";
-                echo "Executing \"$command\" in $projectName".PHP_EOL;
+                $cwd    = "$projectName";
                 $output = yield execute($command, $cwd);
+                echo "Executing \"$command\" in $projectName".PHP_EOL;
                 echo $output.PHP_EOL;
             });
         }
