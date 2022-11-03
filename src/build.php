@@ -75,8 +75,8 @@ function build(
             }
         }
     
-        $app   = "dist/$name";
-        $start = 'dist/start';
+        $app   = "$name";
+        $start = '.dist/start.php';
     
         $dirnameStart = dirname($start);
         try {
@@ -136,7 +136,8 @@ function build(
             # Make the file executable
             chmod($app, 0770);
     
-            yield deleteFile($start);
+            // yield deleteFile($start);
+            yield deleteDirectoryRecursively($dirnameStart);
     
             echo "$app successfully created".PHP_EOL;
         } catch (Exception $e) {
