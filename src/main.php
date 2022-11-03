@@ -36,7 +36,7 @@ function main(
     }
 
     if ($buildConfig) {
-        echo 'Trying to generate build.yml file...'.PHP_EOL;
+        echo 'Trying to generate build.yml file...';
         if (!yield exists('build.yml')) {
             yield write('build.yml', <<<YAML
                 name: app
@@ -44,6 +44,8 @@ function main(
                 libraries: ./src/lib
                 match: /^\.\/(\.build-cache|src|vendor|resources|bin)\/.*/
                 YAML);
+            
+            echo 'done!'.PHP_EOL;
         } else {
             echo 'A build.yml file already exists - will not overwrite.'.PHP_EOL;
         }
