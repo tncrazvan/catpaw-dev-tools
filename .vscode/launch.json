@@ -16,7 +16,9 @@
             "args": [
                 "-l./src/lib/",
                 "-e./src/main.php",
-                "--build",
+                "--sql-transform",
+                "--sql-transform-files\"test.sql\"",
+                "--sql-transform-generator\"generator.php\"",
             ],
             "runtimeArgs": [
                 "-dxdebug.start_with_request=yes",

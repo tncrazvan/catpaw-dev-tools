@@ -1,5 +1,6 @@
 <?php
 use function Amp\File\exists;
+use function Amp\File\isDirectory;
 use function Amp\File\write;
 use Amp\Promise;
 use CatPaw\Attributes\Option;
@@ -26,6 +27,9 @@ function main(
     #[Option("--delete-all-tags")] bool $deleteAllTags,
     #[Option("--execute-everywhere")] string $executeEverywhere,
     #[Option("--execute-everywhere-parallel")] string $executeEverywhereParallel,
+    #[Option("--sql-transform")] false|string $SQLTransform,
+    #[Option("--sql-transform-files")] string $SQLTransformFiles,
+    #[Option("--sql-transform-generator")] string $SQLTransformGenerator = './@sql-transform-generator.php',
 ) {
     if ($executeEverywhere) {
         yield executeEverywhere($executeEverywhere);
@@ -33,6 +37,16 @@ function main(
 
     if ($executeEverywhereParallel) {
         yield executeEverywhereParallel($executeEverywhereParallel);
+    }
+
+    if (false !== $SQLTransform && $SQLTransformFiles) {
+        if (yield isDirectory($SQLTransformFiles)) {
+            /** @var array */
+            $fileNames = yield \CatPaw\listFilesRecursively($SQLTransformFiles);
+        } else {
+            $fileNames = explode(',', $SQLTransformFiles);
+        }
+        yield SQLTransform($SQLTransformGenerator, $fileNames);
     }
 
     if ($buildConfig) {

@@ -36,7 +36,8 @@
             "src/build.php",
             "src/deleteAllTags.php",
             "src/executeEverywhere.php",
-            "src/executeEverywhereParallel.php"
+            "src/executeEverywhereParallel.php",
+            "src/SQLTransform.php"
         ]
     },
     "require": {
