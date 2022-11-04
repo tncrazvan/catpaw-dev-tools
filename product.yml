@@ -12,52 +12,52 @@ exports:
 projects:
   .:
     library: catpaw/dev-tools
-    version: 0.4.59
+    version: 0.4.64
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.63
+    version: 0.4.64
   ../catpaw-web:
     library: catpaw/web
-    version: 0.4.56
+    version: 0.4.64
   ../catpaw-cli:
     library: catpaw/cli
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-examples:
     library: catpaw/examples
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-mysql:
     library: catpaw/mysql
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-mysql-dbms:
     library: catpaw/mysql-dbms
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-optional:
     library: catpaw/optional
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-queue:
     library: catpaw/queue
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-raspberrypi:
     library: catpaw/raspberrypi
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-store:
     library: catpaw/store
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-cui:
     library: catpaw/cui
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-spa:
     library: catpaw/spa
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-starter:
     library: catpaw/starter
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-web-starter:
     library: catpaw/web-starter
-    version: 0.4.54
+    version: 0.4.64
   ../catpaw-svelte-starter:
     library: catpaw/svelte-starter
-    version: 0.4.54
+    version: 0.4.64
     imports:
       - "bin"
       - ".github"
