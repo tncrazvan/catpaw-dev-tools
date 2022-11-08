@@ -1,6 +1,8 @@
 <?php
 use function Amp\call;
-use function Amp\File\{read, write};
+use function Amp\File\exists;
+use function Amp\File\read;
+use function Amp\File\write;
 use Amp\Promise;
 
 use function Amp\Promise\all;
@@ -12,12 +14,23 @@ use function CatPaw\execute;
  */
 function sync():Promise {
     return call(function() {
+        if (yield exists("./.product.cache")) {
+            $cache = yaml_parse(yield read("./.product.cache"));
+        } else {
+            $cache = [];
+        }
+
+        $_ENV['projects'] = $cache['projects'] ?? $_ENV['projects'] ?? [];
+
         /** @var array */
         $projects  = $_ENV['projects'] ?? [];
         $root      = realpath('.');
         $libraries = [];
         $versions  = [];
         $promises  = [];
+
+        
+
         
         foreach ($projects as $projectName => $projectProperties) {
             $library            = $projectProperties['library'] ?? $projectName;
@@ -54,6 +67,7 @@ function sync():Promise {
                 yield write($composeFileName, trim(str_replace('\/', '/', yield read($composeFileName))));
             }
 
+            $cache["projects"]["projectName"]["version"] = $versionString;
 
             /**
              * @psalm-suppress MissingClosureReturnType
@@ -92,5 +106,6 @@ function sync():Promise {
                 yield execute("composer update", $cwd);
             });
         }
+        yaml_emit_file(".product.cache", $cache);
     });
 }
