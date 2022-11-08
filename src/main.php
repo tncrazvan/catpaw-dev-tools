@@ -1,25 +1,29 @@
 <?php
 use function Amp\File\exists;
 use function Amp\File\isDirectory;
+use function Amp\File\isFile;
 use function Amp\File\write;
-use Amp\Promise;
 use CatPaw\Attributes\Option;
 use CatPaw\Environment\Attributes\Environment;
+use Monolog\Logger;
 
 /**
  * 
- * @param bool $sync
- * @param bool $export
- * @param bool $deleteAllTags
- * @return Generator<
- *  int, 
- *  Promise<void>, 
- *  mixed, 
- *  mixed
- * >
+ * @param  bool         $sync
+ * @param  bool         $export
+ * @param  bool         $buildConfig
+ * @param  false|string $build
+ * @param  bool         $deleteAllTags
+ * @param  string       $executeEverywhere
+ * @param  string       $executeEverywhereParallel
+ * @param  string       $transform
+ * @param  string       $generator
+ * @throws Error
+ * @return Generator
  */
 #[Environment('product.yml', 'product.yaml', 'resources/product.yml', 'resources/product.yaml')]
 function main(
+    Logger $logger,
     #[Option("--sync")] bool $sync,
     #[Option("--export")] bool $export,
     #[Option("--build-config")] bool $buildConfig,
@@ -27,9 +31,8 @@ function main(
     #[Option("--delete-all-tags")] bool $deleteAllTags,
     #[Option("--execute-everywhere")] string $executeEverywhere,
     #[Option("--execute-everywhere-parallel")] string $executeEverywhereParallel,
-    #[Option("--sql-transform")] false|string $SQLTransform,
-    #[Option("--sql-transform-files")] string $SQLTransformFiles,
-    #[Option("--sql-transform-generator")] string $SQLTransformGenerator = './@sql-transform-generator.php',
+    #[Option("--sql-transform")] string $transform,
+    #[Option("--sql-transform-generator")] string $generator = './generator.php',
 ) {
     if ($executeEverywhere) {
         yield executeEverywhere($executeEverywhere);
@@ -39,14 +42,25 @@ function main(
         yield executeEverywhereParallel($executeEverywhereParallel);
     }
 
-    if (false !== $SQLTransform && $SQLTransformFiles) {
-        if (yield isDirectory($SQLTransformFiles)) {
-            /** @var array */
-            $fileNames = yield \CatPaw\listFilesRecursively($SQLTransformFiles);
-        } else {
-            $fileNames = explode(',', $SQLTransformFiles);
+    if ($transform) {
+        $fileNames = [];
+        foreach (explode(',', $transform) as $fileName) {
+            if (yield isDirectory($fileName)) {
+                /** @var array */
+                $fileNames = [
+                    ...$fileNames,
+                    ...(yield \CatPaw\listFilesRecursively($fileName)),
+                ];
+            } else if (yield isFile($fileName)) {
+                $fileNames = [
+                    ...$fileNames,
+                    $fileName,
+                ];
+            } else {
+                $logger->warning("Could not find file $fileName.");
+            }
         }
-        yield SQLTransform($SQLTransformGenerator, $fileNames);
+        yield SQLTransform($generator, $fileNames);
     }
 
     if ($buildConfig) {
