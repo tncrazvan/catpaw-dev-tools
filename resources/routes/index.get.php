@@ -12,7 +12,7 @@ return function(
         'root'
     );
     
-    $statement = $connection->prepare("\ndeclare @username varchar(255)\n\n\nset @username = :username;\n\n\nselect * from Log;\n");
+    $statement = $connection->prepare("set @username = :username;\n\n\nselect * from Log;\n");
     if ($statement->execute(["username" => $username])) {
         return new Response(Status::OK, $statement->fetchAll());
     }

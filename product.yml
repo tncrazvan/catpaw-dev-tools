@@ -14,10 +14,10 @@ web-server:
 projects:
   .:
     library: catpaw/dev-tools
-    version: 0.4.70
+    version: 0.4.71
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.70
+    version: 0.4.71
   ../catpaw-libsdl:
     library: catpaw/libsdl
     version: 0.4.68

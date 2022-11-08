@@ -16,7 +16,7 @@
             "args": [
                 "-l./src/lib/",
                 "-e./src/main.php",
-                "--start-web-server"
+                "--sql-transform=\"./resources/routes/\""
             ],
             "runtimeArgs": [
                 "-dxdebug.start_with_request=yes",

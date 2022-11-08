@@ -32,8 +32,8 @@ function main(
     #[Option("--execute-everywhere")] string $executeEverywhere,
     #[Option("--execute-everywhere-parallel")] string $executeEverywhereParallel,
     #[Option("--sql-transform")] string $transform,
-    #[Option("--sql-transform-generator")] string $generator = './generator.php',
     #[Option("--start-web-server")] bool $startWebServer,
+    #[Option("--sql-transform-generator")] string $generator = './generator.php',
 ) {
     if ($executeEverywhere) {
         yield executeEverywhere($executeEverywhere);
