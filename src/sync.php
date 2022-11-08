@@ -67,7 +67,7 @@ function sync():Promise {
                 yield write($composeFileName, trim(str_replace('\/', '/', yield read($composeFileName))));
             }
 
-            $cache["projects"]["projectName"]["version"] = $versionString;
+            $cache["projects"][$projectName]["version"] = $versionString;
 
             /**
              * @psalm-suppress MissingClosureReturnType
