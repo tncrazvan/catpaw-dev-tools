@@ -15,6 +15,7 @@
         "start": "XDEBUG_MODE=off php ./bin/start -e./src/main.php",
         "transform": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --sql-transform=\"resources/routes\"",
         "server": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --start-web-server",
+        "clear:cache": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --clear-cache",
         "sync": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --sync",
         "export": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --export",
         "execute": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --execute-everywhere-parallel",

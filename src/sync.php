@@ -20,17 +20,12 @@ function sync():Promise {
             $cache = [];
         }
 
-        $_ENV['projects'] = $cache['projects'] ?? $_ENV['projects'] ?? [];
-
         /** @var array */
         $projects  = $_ENV['projects'] ?? [];
         $root      = realpath('.');
         $libraries = [];
         $versions  = [];
         $promises  = [];
-
-        
-
         
         foreach ($projects as $projectName => $projectProperties) {
             $library            = $projectProperties['library'] ?? $projectName;
@@ -47,6 +42,11 @@ function sync():Promise {
 
             $library       = $projectProperties['library'] ?? $projectName;
             $versionString = preg_replace('/"/', '\\"', $projectProperties['version']);
+
+            if (($cache["projects"][$projectName]["version"] ?? '') === $versionString) {
+                continue;
+            }
+
             $versionPieces = explode('.', $versionString);
             $version       = join('.', [$versionPieces[0] ?? '0',$versionPieces[1] ?? '0']);
             $message       = preg_replace('/"/', '\\"', $projectProperties['message'] ?? "Version $versionString");

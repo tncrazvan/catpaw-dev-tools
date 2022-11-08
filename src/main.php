@@ -1,4 +1,6 @@
 <?php
+
+use function Amp\File\deleteFile;
 use function Amp\File\exists;
 use function Amp\File\isDirectory;
 use function Amp\File\isFile;
@@ -33,8 +35,13 @@ function main(
     #[Option("--execute-everywhere-parallel")] string $executeEverywhereParallel,
     #[Option("--sql-transform")] string $transform,
     #[Option("--start-web-server")] bool $startWebServer,
+    #[Option("--clear-cache")] bool $clearCache,
     #[Option("--sql-transform-generator")] string $generator = './generator.php',
 ) {
+    if ($clearCache && yield exists("./.product.cache")) {
+        yield deleteFile("./.product.cache");
+    }
+
     if ($executeEverywhere) {
         yield executeEverywhere($executeEverywhere);
     }
