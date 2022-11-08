@@ -57,7 +57,7 @@ function main(
                     $fileName,
                 ];
             } else {
-                $logger->warning("Could not find file $fileName.");
+                $logger->warning("Could not find file \"$fileName\".");
             }
         }
         yield SQLTransform($generator, $fileNames);
