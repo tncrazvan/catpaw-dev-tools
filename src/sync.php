@@ -106,6 +106,8 @@ function sync():Promise {
                 yield execute("composer update", $cwd);
             });
         }
-        yaml_emit_file(".product.cache", $cache);
+        
+        $cacheStringified = yaml_emit($cache, YAML_UTF8_ENCODING);
+        yield write(".product.cache", $cacheStringified);
     });
 }
