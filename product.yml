@@ -8,14 +8,16 @@ exports:
   - "psalm.xml"
   - "build.yml"
   - "LICENSE"
-
+web-server:
+  interfaces: 
+    - 127.0.0.1:8080
 projects:
   .:
     library: catpaw/dev-tools
-    version: 0.4.68
+    version: 0.4.70
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.68
+    version: 0.4.70
   ../catpaw-libsdl:
     library: catpaw/libsdl
     version: 0.4.68

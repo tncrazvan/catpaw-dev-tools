@@ -6,7 +6,8 @@ use function Amp\File\read;
 use function Amp\File\write;
 
 use Amp\Promise;
-
+use CatPaw\Utilities\Container;
+use Psr\Log\LoggerInterface;
 
 const PATTERN_SQL_INJECT = '/\/\*[\s\*]*\s+@inject\s+(query|path)\s+"(\w+)"\s+into\s+(@\w+)\s+[\s\*]*\*\//i';
 const PATTERN_PHP_ARGS   = '/\/\*[\s\*]*\s+@args\s+[\s\*]*\*\//i';
@@ -15,20 +16,23 @@ const PATTERN_PHP_INJECT = '/\/\*[\s\*]*\s+@inject\s+[\s\*]*\*\//i';
 
 /**
  * 
- * @param  string        $SQLTransformGenerator
+ * @param  string        $generator
  * @param  array         $fileNames
  * @return Promise<void>
  */
-function SQLTransform(string $SQLTransformGenerator, array $fileNames):Promise {
-    return call(function() use ($SQLTransformGenerator, $fileNames) {
-        $sqlGeneratorContents = '';
-
-        if (yield exists($SQLTransformGenerator)) {
-            $sqlGeneratorContents = yield read($SQLTransformGenerator);
+function sqlTransform(string $generator, array $fileNames):Promise {
+    return call(function() use ($generator, $fileNames) {
+        /** @var LoggerInterface */
+        $logger            = yield Container::create(LoggerInterface::class);
+        $phpCode           = '';
+        $realPathGenerator = realpath($generator);
+        if (yield exists($generator)) {
+            $phpCode = yield read($generator);
         }
 
         foreach ($fileNames as $fileName) {
-            if (str_ends_with($fileName, $SQLTransformGenerator)) {
+            if (realpath($fileName) === $realPathGenerator) {
+                $logger->info("Skipping \"$realPathGenerator\" because it's a generator file.");
                 continue;
             }
             if (str_ends_with(strtolower($fileName), '.sql')) {
@@ -82,7 +86,7 @@ function SQLTransform(string $SQLTransformGenerator, array $fileNames):Promise {
 
                 $injectStringified = '['.join(',', $inject).']';
 
-                $phpCode = preg_replace(PATTERN_PHP_ARGS, "$args\n", $sqlGeneratorContents);
+                $phpCode = preg_replace(PATTERN_PHP_ARGS, "$args\n", $phpCode);
                 $phpCode = preg_replace(PATTERN_PHP_QUERY, $query, $phpCode);
                 $phpCode = preg_replace(PATTERN_PHP_INJECT, $injectStringified, $phpCode);
 

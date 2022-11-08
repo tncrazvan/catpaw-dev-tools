@@ -13,6 +13,8 @@
         "action:test": [],
         "test": [],
         "start": "XDEBUG_MODE=off php ./bin/start -e./src/main.php",
+        "transform": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --sql-transform=\"resources/routes\"",
+        "server": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --start-web-server",
         "sync": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --sync",
         "export": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --export",
         "execute": "XDEBUG_MODE=off php ./bin/start -e./src/main.php --execute-everywhere-parallel",
@@ -37,7 +39,8 @@
             "src/deleteAllTags.php",
             "src/executeEverywhere.php",
             "src/executeEverywhereParallel.php",
-            "src/SQLTransform.php"
+            "src/sqlTransform.php",
+            "src/startWebServer.php"
         ]
     },
     "require": {

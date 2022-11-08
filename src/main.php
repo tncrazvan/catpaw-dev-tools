@@ -5,7 +5,7 @@ use function Amp\File\isFile;
 use function Amp\File\write;
 use CatPaw\Attributes\Option;
 use CatPaw\Environment\Attributes\Environment;
-use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 
 /**
  * 
@@ -23,7 +23,7 @@ use Monolog\Logger;
  */
 #[Environment('product.yml', 'product.yaml', 'resources/product.yml', 'resources/product.yaml')]
 function main(
-    Logger $logger,
+    LoggerInterface $logger,
     #[Option("--sync")] bool $sync,
     #[Option("--export")] bool $export,
     #[Option("--build-config")] bool $buildConfig,
@@ -33,6 +33,7 @@ function main(
     #[Option("--execute-everywhere-parallel")] string $executeEverywhereParallel,
     #[Option("--sql-transform")] string $transform,
     #[Option("--sql-transform-generator")] string $generator = './generator.php',
+    #[Option("--start-web-server")] bool $startWebServer,
 ) {
     if ($executeEverywhere) {
         yield executeEverywhere($executeEverywhere);
@@ -60,7 +61,11 @@ function main(
                 $logger->warning("Could not find file \"$fileName\".");
             }
         }
-        yield SQLTransform($generator, $fileNames);
+        yield sqlTransform($generator, $fileNames);
+    }
+
+    if ($startWebServer) {
+        yield startWebServer();
     }
 
     if ($buildConfig) {
@@ -75,7 +80,7 @@ function main(
             
             echo 'done!'.PHP_EOL;
         } else {
-            echo 'A build.yml file already exists - will not overwrite.'.PHP_EOL;
+            echo 'a build.yml file already exists - will not overwrite.'.PHP_EOL;
         }
     }
 
