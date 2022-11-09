@@ -43,10 +43,6 @@ function sync():Promise {
             $library       = $projectProperties['library'] ?? $projectName;
             $versionString = preg_replace('/"/', '\\"', $projectProperties['version']);
 
-            if (($cache["projects"][$projectName]["version"] ?? '') === $versionString) {
-                continue;
-            }
-
             $versionPieces = explode('.', $versionString);
             $version       = join('.', [$versionPieces[0] ?? '0',$versionPieces[1] ?? '0']);
             $message       = preg_replace('/"/', '\\"', $projectProperties['message'] ?? "Version $versionString");
@@ -72,7 +68,7 @@ function sync():Promise {
             /**
              * @psalm-suppress MissingClosureReturnType
              */
-            $promises[] = function() use ($cwd, $message, $versionString) {
+            $promises[] = function() use ($cwd, $message, $versionString, $cache, $projectName) {
                 echo yield execute("composer fix", $cwd);
                 echo yield execute("rm composer.lock", $cwd);
                 echo yield execute("git fetch", $cwd);
@@ -80,6 +76,11 @@ function sync():Promise {
                 echo yield execute("git add .", $cwd);
                 echo yield execute("git commit -m\"$message\"", $cwd);
                 echo yield execute("git push", $cwd);
+
+                if (($cache["projects"][$projectName]["version"] ?? '') === $versionString) {
+                    return;
+                }
+
                 echo yield execute("git tag -a \"$versionString\" -m\"$message\"", $cwd);
                 echo yield execute("git push --tags", $cwd);
             };
