@@ -13,3 +13,4 @@
 /.sessions/
 .php-cs-fixer.cache
 /dist/
+/.product.cache
