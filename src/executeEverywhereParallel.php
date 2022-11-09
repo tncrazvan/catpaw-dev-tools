@@ -5,7 +5,7 @@ use function CatPaw\execute;
 
 /**
  * 
- * @param  string        $executeEverywhere
+ * @param  string        $command
  * @return Promise<void>
  */
 function executeEverywhereParallel(string $command):Promise {

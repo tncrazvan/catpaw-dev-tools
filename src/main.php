@@ -33,10 +33,9 @@ function main(
     #[Option("--delete-all-tags")] bool $deleteAllTags,
     #[Option("--execute-everywhere")] string $executeEverywhere,
     #[Option("--execute-everywhere-parallel")] string $executeEverywhereParallel,
-    #[Option("--sql-transform")] string $transform,
     #[Option("--start-web-server")] bool $startWebServer,
     #[Option("--clear-cache")] bool $clearCache,
-    #[Option("--test")] int $test = 3,
+    #[Option("--sql-transform")] string $transform,
     #[Option("--sql-transform-generator")] string $generator = './generator.php',
 ) {
     if ($clearCache && yield exists("./.product.cache")) {

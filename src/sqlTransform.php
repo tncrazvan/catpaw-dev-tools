@@ -9,7 +9,7 @@ use Amp\Promise;
 use CatPaw\Utilities\Container;
 use Psr\Log\LoggerInterface;
 
-const PATTERN_SQL_INJECT = '/\/\*[\s\*]*\s+@inject\s+(query|path)\s+"(\w+)"\s+into\s+(@\w+)\s+[\s\*]*\*\//i';
+const PATTERN_SQL_INJECT = '/\/\*[\s\*]*\s+@inject\s+(option|query|path|param)\s+"(\w+)"\s+into\s+(@\w+)\s+[\s\*]*\*\//i';
 const PATTERN_PHP_ARGS   = '/\/\*[\s\*]*\s+@args\s+[\s\*]*\*\//i';
 const PATTERN_PHP_QUERY  = '/\/\*[\s\*]*\s+@query\s+[\s\*]*\*\//i';
 const PATTERN_PHP_INJECT = '/\/\*[\s\*]*\s+@inject\s+[\s\*]*\*\//i';
@@ -49,7 +49,7 @@ function sqlTransform(string $generator, array $fileNames):Promise {
                     $extern                    = trim($extern);
                     $intern                    = trim($intern);
                     $inject[]                  = "\"$extern\" => \$$extern";
-                    if ('param' === $type) {
+                    if ('param' === $type || 'path' === $type) {
                         $params[] = <<<PHP
                             \n\t#[\CatPaw\Web\Attributes\Param] string $$extern
                             PHP;
@@ -61,7 +61,7 @@ function sqlTransform(string $generator, array $fileNames):Promise {
                             subject: $query,
                             limit: 1
                         );
-                    } else if ('query' === $type) {
+                    } else if ('query' === $type || 'option' === $type) {
                         $queries[] = <<<PHP
                             \n\t#[\CatPaw\Web\Attributes\Query] string $$extern = ''
                             PHP;
