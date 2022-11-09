@@ -63,8 +63,6 @@ function sync():Promise {
                 yield write($composeFileName, trim(str_replace('\/', '/', yield read($composeFileName))));
             }
 
-            $cache["projects"][$projectName]["version"] = $versionString;
-
             /**
              * @psalm-suppress MissingClosureReturnType
              */
@@ -84,6 +82,8 @@ function sync():Promise {
                 echo yield execute("git tag -a \"$versionString\" -m\"$message\"", $cwd);
                 echo yield execute("git push --tags", $cwd);
             };
+
+            $cache["projects"][$projectName]["version"] = $versionString;
         }
 
         $joins = [];
