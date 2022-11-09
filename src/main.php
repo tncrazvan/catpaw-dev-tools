@@ -36,6 +36,7 @@ function main(
     #[Option("--sql-transform")] string $transform,
     #[Option("--start-web-server")] bool $startWebServer,
     #[Option("--clear-cache")] bool $clearCache,
+    #[Option("--test")] int $test = 3,
     #[Option("--sql-transform-generator")] string $generator = './generator.php',
 ) {
     if ($clearCache && yield exists("./.product.cache")) {

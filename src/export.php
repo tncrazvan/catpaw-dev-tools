@@ -4,9 +4,13 @@
  */
 
 use function Amp\call;
-use function Amp\File\{createDirectoryRecursively, exists, isFile};
+use function Amp\File\createDirectoryRecursively;
+use function Amp\File\exists;
+use function Amp\File\isFile;
 use Amp\Promise;
-use function CatPaw\{copyDirectoryRecursively, copyFile, deleteDirectoryRecursively};
+use function CatPaw\copyDirectoryRecursively;
+use function CatPaw\copyFile;
+use function CatPaw\deleteDirectoryRecursively;
 
 /**
  * @param  string      $root
