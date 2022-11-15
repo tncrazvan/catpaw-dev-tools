@@ -1,37 +1,37 @@
 ---
 projects:
   .:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-core:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-libsdl:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-web:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-cli:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-examples:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-mysql:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-mysql-dbms:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-optional:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-queue:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-raspberrypi:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-store:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-cui:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-spa:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-starter:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-web-starter:
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-svelte-starter:
-    version: 0.4.81
+    version: 0.4.82
 ...
