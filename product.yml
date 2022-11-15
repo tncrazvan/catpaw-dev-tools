@@ -15,55 +15,55 @@ web-server:
 projects:
   .:
     library: catpaw/dev-tools
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-libsdl:
     library: catpaw/libsdl
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-web:
     library: catpaw/web
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-cli:
     library: catpaw/cli
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-examples:
     library: catpaw/examples
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-mysql:
     library: catpaw/mysql
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-mysql-dbms:
     library: catpaw/mysql-dbms
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-optional:
     library: catpaw/optional
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-queue:
     library: catpaw/queue
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-raspberrypi:
     library: catpaw/raspberrypi
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-store:
     library: catpaw/store
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-cui:
     library: catpaw/cui
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-spa:
     library: catpaw/spa
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-starter:
     library: catpaw/starter
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-web-starter:
     library: catpaw/web-starter
-    version: 0.4.81
+    version: 0.4.82
   ../catpaw-svelte-starter:
     library: catpaw/svelte-starter
-    version: 0.4.81
+    version: 0.4.82
     imports:
       - "bin"
       - ".gitignore"
