@@ -15,7 +15,7 @@ web-server:
 projects:
   .:
     library: catpaw/dev-tools
-    version: 0.4.84
+    version: 0.4.85
   ../catpaw-core:
     library: catpaw/core
     version: 0.4.84

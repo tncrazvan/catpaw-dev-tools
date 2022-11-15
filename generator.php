@@ -5,7 +5,7 @@ use Amp\Http\Status;
 
 return function(/** @args */) {
     static $connection = new \PDO(
-        'mysql:host=localhost;dbname=Applicazioni',
+        'mysql:host=localhost;dbname=db1',
         'root',
         'root'
     );

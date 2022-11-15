@@ -4,10 +4,10 @@ use Amp\Http\Server\Response;
 use Amp\Http\Status;
 
 return function(
-	#[\CatPaw\Web\Attributes\Query] string $username = '',
+    #[\CatPaw\Web\Attributes\Query] string $username = '',
 ) {
     static $connection = new \PDO(
-        'mysql:host=localhost;dbname=Applicazioni',
+        'mysql:host=localhost;dbname=db1',
         'root',
         'root'
     );
