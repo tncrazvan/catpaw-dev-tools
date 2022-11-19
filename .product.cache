@@ -3,7 +3,7 @@ projects:
   .:
     version: 0.4.98
   ../catpaw-core:
-    version: 0.4.98
+    version: 0.4.99
   ../catpaw-libsdl:
     version: 0.4.98
   ../catpaw-web:
