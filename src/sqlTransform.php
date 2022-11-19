@@ -82,7 +82,9 @@ function sqlTransform(string $generator, array $fileNames):Promise {
                 }
                 $fileName = preg_replace('/.sql/i', '.php', $fileName);
 
+                $query = preg_replace('/\s*use\s+\w+\s*;?/i', '', $query);
                 $query = preg_replace('/\n/', "\\n", $query);
+                
 
                 $injectStringified = '['.join(',', $inject).']';
 
