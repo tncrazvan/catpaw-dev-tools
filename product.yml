@@ -20,7 +20,7 @@ projects:
     version: 0.4.98
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.101
+    version: 0.4.102
   ../catpaw-libsdl:
     library: catpaw/libsdl
     version: 0.4.98
