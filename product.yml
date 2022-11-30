@@ -20,7 +20,7 @@ projects:
     version: 0.4.104
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.104
+    version: 0.4.105
   ../catpaw-libsdl:
     library: catpaw/libsdl
     version: 0.4.104
@@ -35,9 +35,6 @@ projects:
     version: 0.4.104
   ../catpaw-mysql:
     library: catpaw/mysql
-    version: 0.4.104
-  ../catpaw-mysql-dbms:
-    library: catpaw/mysql-dbms
     version: 0.4.104
   ../catpaw-optional:
     library: catpaw/optional
@@ -54,25 +51,9 @@ projects:
   ../catpaw-cui:
     library: catpaw/cui
     version: 0.4.104
-  ../catpaw-spa:
-    library: catpaw/spa
-    version: 0.4.104
   ../catpaw-starter:
     library: catpaw/starter
     version: 0.4.104
   ../catpaw-web-starter:
     library: catpaw/web-starter
     version: 0.4.104
-  ../catpaw-svelte-starter:
-    library: catpaw/svelte-starter
-    version: 0.4.104
-    imports:
-      - "bin"
-      - ".gitignore"
-      - ".github"
-      - ".php-cs-fixer.php"
-      - "psalm.xml"
-      - "build.yml"
-      - "LICENSE"
-      - "CODE_OF_CONDUCT.md"
-      - "CONTRIBUTING.md"
