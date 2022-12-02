@@ -7,7 +7,7 @@ projects:
   ../catpaw-libsdl:
     version: 0.4.104
   ../catpaw-web:
-    version: 0.4.108
+    version: 0.4.109
   ../catpaw-cli:
     version: 0.4.104
   ../catpaw-examples:
