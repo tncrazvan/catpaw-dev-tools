@@ -23,7 +23,7 @@ projects:
   ../catpaw-raspberrypi:
     version: 0.4.123
   ../catpaw-store:
-    version: 0.4.126
+    version: 0.4.127
   ../catpaw-cui:
     version: 0.4.123
   ../catpaw-spa:
