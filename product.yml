@@ -47,7 +47,7 @@ projects:
     version: 0.4.123
   ../catpaw-store:
     library: catpaw/store
-    version: 0.4.128
+    version: 0.4.129
   ../catpaw-cui:
     library: catpaw/cui
     version: 0.4.123
