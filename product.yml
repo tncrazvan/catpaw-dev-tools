@@ -20,7 +20,7 @@ projects:
     version: 0.4.123
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.128
+    version: 0.4.129
   ../catpaw-libsdl:
     library: catpaw/libsdl
     version: 0.4.123
@@ -47,7 +47,7 @@ projects:
     version: 0.4.123
   ../catpaw-store:
     library: catpaw/store
-    version: 0.4.125
+    version: 0.4.126
   ../catpaw-cui:
     library: catpaw/cui
     version: 0.4.123
