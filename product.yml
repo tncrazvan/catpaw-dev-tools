@@ -17,43 +17,43 @@ web-server:
 projects:
   .:
     library: catpaw/dev-tools
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-core:
     library: catpaw/core
-    version: 0.4.129
+    version: 0.4.130
   ../catpaw-libsdl:
     library: catpaw/libsdl
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-web:
     library: catpaw/web
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-cli:
     library: catpaw/cli
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-examples:
     library: catpaw/examples
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-mysql:
     library: catpaw/mysql
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-optional:
     library: catpaw/optional
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-queue:
     library: catpaw/queue
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-raspberrypi:
     library: catpaw/raspberrypi
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-store:
     library: catpaw/store
-    version: 0.4.129
+    version: 0.4.130
   ../catpaw-cui:
     library: catpaw/cui
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-starter:
     library: catpaw/starter
-    version: 0.4.123
+    version: 0.4.130
   ../catpaw-web-starter:
     library: catpaw/web-starter
-    version: 0.4.123
+    version: 0.4.130
