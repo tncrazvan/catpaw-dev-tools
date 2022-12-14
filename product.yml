@@ -53,7 +53,7 @@ projects:
     version: 0.4.130
   ../catpaw-starter:
     library: catpaw/starter
-    version: 0.4.130
+    version: 0.4.131
   ../catpaw-web-starter:
     library: catpaw/web-starter
     version: 0.4.130
