@@ -29,7 +29,7 @@ projects:
   ../catpaw-spa:
     version: 0.4.104
   ../catpaw-starter:
-    version: 0.4.130
+    version: 0.4.131
   ../catpaw-web-starter:
     version: 0.4.130
   ../catpaw-svelte-starter:
